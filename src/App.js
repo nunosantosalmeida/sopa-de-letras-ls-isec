@@ -3,7 +3,7 @@ import HelloWorld from "./helpers/helloworld";
 import './assets/styles/App.css';
 
 function App() {
-  //HelloWorld();
+  HelloWorld();
   return (
 
     <div className="App">
