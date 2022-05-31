@@ -9,7 +9,7 @@ let words = ["ABCDEFIK","REN","HU","OLAK","TY","UGAUGA","BOB","YUH","HAHAHA","HE
 
 
 function PlaceInLineWord(word2array,lnumb,finalArray, usedWords,positionsOccupied){
-    let lettNumb = word2array.length;
+    //let lettNumb = word2array.length;
     console.log(word2array);
     let cantcontinue=false;
     let randPos;
@@ -32,7 +32,7 @@ function PlaceInLineWord(word2array,lnumb,finalArray, usedWords,positionsOccupie
          /*coloca no inicio da uma linha qualquer*/
         for(let k = 0; k<positionsOccupied.length;k++){
             for(let pos=randPos; pos<randPos+word2array.length;pos++){
-                if(positionsOccupied[k]==pos){
+                if(positionsOccupied[k]===pos){
                     cantcontinue = true;
                     continue;
                 }
@@ -76,7 +76,7 @@ function PlaceInLineWord(word2array,lnumb,finalArray, usedWords,positionsOccupie
 }
 
 function PlaceInColumnWord(word2array,lnumb,finalArray, usedWords,positionsOccupied){
-    let lettNumb = word2array.length;
+    //let lettNumb = word2array.length;
     console.log(word2array);
     let cantcontinue=false;
     let randPos;
@@ -103,7 +103,7 @@ function PlaceInColumnWord(word2array,lnumb,finalArray, usedWords,positionsOccup
         }
         for(let k = 0; k<positionsOccupied.length;k++){
             for(let pos=randPos; pos<randPos+linha*(word2array.length);pos=pos+linha){
-                if(positionsOccupied[k]==pos){
+                if(positionsOccupied[k]===pos){
                     cantcontinue = true;
                     continue;
                 }
@@ -151,7 +151,7 @@ function PlaceInColumnWord(word2array,lnumb,finalArray, usedWords,positionsOccup
 
 function checkUsedWord(word, usedWords){
     for(let i=0;i<usedWords.length;i++){
-        if(word==usedWords[i]){
+        if(word===usedWords[i]){
             return true;
         }
     }
