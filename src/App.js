@@ -6,13 +6,20 @@ import "./components/section/section.css"
 import PanelControl from "./components/painel-control/painel-control.component";
 import "./components/painel-control/painel-control.css"
 import Footer from "./components/footer/footer.component";
+import "./components/game-board/game-board.css"
+import GameBoard from "./components/game-board/game-board.component";
 
 function App() {
+
+  let boardSize = 7 * 7;
+
+
   return (
     <body>
       <div id="container">
         <Header />
         <PanelControl/>
+        <GameBoard lnumb={boardSize} />
         <Footer/>
       </div>
     </body>
