@@ -4,7 +4,7 @@ import Letter from '../letter/letter.component'
 
 import "./game-board.css"
 
-const abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'].sort(() => Math.random() - 0.5);
+const abc = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].sort(() => Math.random() - 0.5);
 let words = ["ABCDEFIK","REN","HU","OLAK","TY","UGAUGA","BOB","YUH","HAHAHA","HEHEHE"];
 
 
@@ -236,8 +236,10 @@ function GameBoard({lnumb}){
         </div>
         <div>
           <p>
+            <section id="used-words">
             Used Words:
             {usedWords.map((item) => " ["+item + "] ")}{" "}
+            </section>
           </p>
         </div>
       </div>

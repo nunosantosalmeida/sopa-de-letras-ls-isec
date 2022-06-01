@@ -8,3 +8,9 @@
     align-items: center;
     border-radius: 5px;;
   }
+
+  .letter:hover {
+    background-color: aquamarine;
+    color: black;
+
+  }

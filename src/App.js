@@ -1,13 +1,16 @@
 import "./App.css";
 import Header from "./components/header/header.component";
-import "./components/container/container.css";
-import "./components/body/body.css"
-import "./components/section/section.css"
 import PanelControl from "./components/painel-control/painel-control.component";
-import "./components/painel-control/painel-control.css"
 import Footer from "./components/footer/footer.component";
-import "./components/game-board/game-board.css"
 import GameBoard from "./components/game-board/game-board.component";
+import "./assets/styles/body.css";
+import "./assets/styles/container.css";
+//import "./assets/styles/game-board.css";
+import "./assets/styles/header.css";
+//import "./assets/styles/letter.css";
+import "./assets/styles/painel-control.css";
+import "./assets/styles/section.css";
+
 
 function App() {
 
@@ -18,8 +21,8 @@ function App() {
     <body>
       <div id="container">
         <Header />
-        <PanelControl/>
         <GameBoard lnumb={boardSize} />
+        <PanelControl/>
         <Footer/>
       </div>
     </body>
