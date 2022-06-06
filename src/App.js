@@ -9,6 +9,9 @@ import Footer from "./components/footer/footer.component";
 import "./components/game-board/game-board.css"
 import GameBoard from "./components/game-board/game-board.component";
 
+
+import SimpleGB from "./components/simple-gb/simple-gb.component";
+
 function App() {
 
   let boardSize = 7 * 7;
@@ -20,6 +23,7 @@ function App() {
         <Header />
         <PanelControl/>
         <GameBoard lnumb={boardSize} />
+        {/*<SimpleGB lnumb={boardSize} />*/}
         <Footer/>
       </div>
     </body>

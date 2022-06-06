@@ -1,0 +1,10 @@
+.board{
+
+    height: 600px;
+    width: 600px;
+    
+  
+    display: grid;
+  
+    gap: 1em;
+  }

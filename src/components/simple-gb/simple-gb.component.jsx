@@ -1,8 +1,14 @@
+
+/*STILL NOT WORKING AS IT IS SUPPOSED TO DO!!!!!*/
+
+
+
 import React from 'react';
 
 import Letter from '../letter/letter.component'
 
-import "./game-board.css"
+
+import "./simple-gb.css"
 
 const abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'].sort(() => Math.random() - 0.5);
 let words = ["ABCDEFIK","REN","HU","OLAK","TY","UGAUGA","BOB","YUH","HAHAHA","HEHEHE"];
@@ -176,13 +182,21 @@ function getRandomWord(lnumb, usedWords){
 }
 
 function MakeRandomBoard(lnumb,finalArray){
-    for(let i=0; i<lnumb ; i++){
-        finalArray.push(abc[Math.floor(Math.random()*(abc.length-1))]);
-}
+    let line;
+    let arrayline=[];
+
+    line = Math.sqrt(lnumb);
+    for(let i=0; i<line ; i++){
+        for(let j=0; j<line;j++){
+            finalArray.push(arrayline[Math.floor(Math.random()*(abc.length-1))]);
+        }
+        finalArray.push(arrayline);
+        arrayline = [];        
+    }
 }
 
-function GameBoard({lnumb}){
-    let finalArray=[];
+function SimpleGB({lnumb}){
+    let finalArray=[[]];
     let randomword;
 
     let positionsOccupied = [];
@@ -194,7 +208,7 @@ function GameBoard({lnumb}){
 
     MakeRandomBoard(lnumb,finalArray);
 
-    for(let c=0; c<(Math.floor((Math.sqrt(lnumb))/2));c++){
+    /*for(let c=0; c<(Math.floor((Math.sqrt(lnumb))/2));c++){
         
         
         randomword = getRandomWord(lnumb, usedWords);
@@ -211,17 +225,17 @@ function GameBoard({lnumb}){
         }
         
         
-    }
+    }*/
     
     /*PlaceInLineWord(word2array,lnumb,finalArray,positionsOccupied);
     word2array.reverse();
     PlaceInLineWord(word2array,lnumb,finalArray,positionsOccupied);*/
     /*PlaceInColumnWord(word2array,lnumb,finalArray,positionsOccupied);     WITH BUGS*/
-    for(let counter=0; counter<usedWords.length;counter++){
+    /*for(let counter=0; counter<usedWords.length;counter++){
         console.log(usedWords[counter]);
-    }
+    }*/
     return (
-      <div className="table">
+      <div>
         <div
           className="board"
           style={{
@@ -232,16 +246,10 @@ function GameBoard({lnumb}){
           {finalArray.map((item) => (
             <Letter item={item} />
           ))}
-          <p></p>
         </div>
-        <div className="usedWords">
-          
-            Used Words:
-            {usedWords.map((item) => " ["+item + "] ")}{" "}
-          
-        </div>
+
       </div>
     );
 }
 
-export default GameBoard;
+export default SimpleGB;
