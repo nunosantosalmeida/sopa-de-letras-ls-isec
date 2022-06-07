@@ -1,5 +1,11 @@
-
+/**
+ * Trabalho Realizado por Micael Eid (2019112744), Nuno Almeida (2019121655) e Renato Craveiro (2018011392)
+ * No âmbitio da Unidade Curricular de Linguagens Script (1º Ano - 2º Semestre)
+ * ISEC - Licenciatura em Engenharia Informática - Ano Letivo 2021/2022  
+ */
   
+/*.letter - class div que representa uma caixa de fundo cinzento, com texto branco, centrado com uma borda arredondada a 5 px.
+Representa uma letra num tabuleiro.*/
   .letter{
     background-color: gray;
     color: white;
