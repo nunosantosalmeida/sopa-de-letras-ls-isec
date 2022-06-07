@@ -1,0 +1,30 @@
+/**
+ * Trabalho Realizado por Micael Eid (2019112744), Nuno Almeida (2019121655) e Renato Craveiro (2018011392)
+ * No âmbitio da Unidade Curricular de Linguagens Script (1º Ano - 2º Semestre)
+ * ISEC - Licenciatura em Engenharia Informática - Ano Letivo 2021/2022  
+ */
+
+/*.table - class div pai de board e usedWords ocupa 90% do espaço em largura.*/
+.table {
+  display: flex;
+  width: 90%;
+}
+
+/*.board - class div que contém as letras e palavras a encontrar. tem altura e largura de 600px, é apresentada em grelha (para as letras) 
+tem espaçamento de 1em entre cada elemento, margem à direita de 20px e ocupa 2 flex (no caso 2/3 do espaço de .table, pois .usedWords ocupa 1 flex)*/
+.board {
+  height: 600px;
+  width: 600px;
+
+  display: grid;
+
+  gap: 1em;
+
+  margin-right: 20px;
+  flex: 2;
+}
+
+/*.usedWords - class div que contém as palavras a encontrar.Ocupa 1 flex (no caso 1/3 do espaço de .table, pois .board ocupa 2 flex)*/
+.usedWords {
+  flex: 1;
+}
