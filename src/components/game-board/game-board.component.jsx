@@ -339,8 +339,8 @@ function GameBoard({lnumb}){
             gridTemplateRows: "repeat(" + Math.sqrt(lnumb) + ",1fr)",
           }/*Div que contém o tabuleiro. O style especifica quantas colunas terá e quantas linhas te´ra (sqrt de num total de letras (9=3linhas*3colunas))*/}
         >
-          {finalArray.map((item) => (/*Coloca todos as letras do array a apresentar...*/
-            <Letter item={item} />
+          {finalArray.map((item,index) => (/*Coloca todos as letras do array a apresentar...*/
+            <Letter key={index} item={item} />
           ))/*...Em elementos do tipo letra */}
           <p></p>
         </div>
