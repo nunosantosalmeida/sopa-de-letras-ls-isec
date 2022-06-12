@@ -12,12 +12,29 @@ import "./letter.css"
  * Representa uma letra (em jsx) a ser apresentada num tabuleiro
  * 
  * @param {*} param0 Letra a ser apresentada
+ * @param {*} param1 key
  * @returns letra em jsx
  */
-function Letter({item}){
+function Letter(props){
+    const {/*setletter,*/ lett, index } = props;
+
+    let ind=index;
+    function click(){
+        console.log("KEY: "+ind+" | LETER: "+lett);
+        //setletter(lett);
+    }
+
+
+    function down(){
+        console.log("A SIRUGAR: KEY: "+ind+" | LETER: "+lett);
+    }
+
+    function up(){
+        console.log("LARGOU: KEY: "+ind+" | LETER: "+lett);
+    }
     return (
-    <div className="letter">
-        {item}
+    <div className="letter" /*onClick={click}*/ onMouseDown={down} onMouseUp={up} /*onMouseEnter={click}*/>
+        {lett}
     </div>
     )
 }
