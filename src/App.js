@@ -28,8 +28,8 @@ function App() {
     <body>
       <div id="container">
         <Header />
-        <GameBoard lnumb={boardSize} />
         <PanelControl/>
+        <GameBoard lnumb={boardSize} />
         <Footer/>
       </div>
     </body>

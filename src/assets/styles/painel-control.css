@@ -1,35 +1,40 @@
+#panel-control{
+  margin: 10px 0 25px 0;
+  padding: 10px 10px 10px 10px;
+  background-color: rgb(236, 233, 233);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  width: 865px;
+  min-width: 10px;
+  border-radius: 10px;
+}
 .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
+    background-color: #8ed0f7; /* Green */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .60rem;
+    box-sizing: border-box;
+    padding: 14px 40px;
+    position: relative;
+    right: 9.5cm;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 17px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    transition: .2s;
   }
 
   .play {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #4CAF50;
+    /* background-color: white;  */
+    color: rgb(0, 0, 0); 
+    /* border: 2px solid #4CAF50; */
   }
   
   .play:hover {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4bb2e2f1;
+    color: rgb(0, 0, 0);
+    transform: scale(1.1); /* Efeito zoom no hover*/
+    
   }
   
-  .stop {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #ba0000;
-  }
-  
-  .stop:hover {
-    background-color: #ba0000;
-    color: white;
-  }

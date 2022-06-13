@@ -365,10 +365,8 @@ function GameBoard({lnumb}){
           <p></p>
         </div>
         <div className="usedWords" /*onClick={showSelectedWords}*/>{/*Div que contém as palavras usadas no tabuleiro*/}
-          
             Used Words:
-            {usedWords.map((item, index) => " ["+index+" " + item + "] ")}{" "/*Coloca cada uma no texto a apresentar */}
-          
+            {usedWords.map((item, index) => "\n"+"["+index+" -"+" "+item+"]")}{" "/*Coloca cada uma no texto a apresentar */}
         </div>
       </div>
     );
