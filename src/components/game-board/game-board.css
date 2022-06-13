@@ -18,7 +18,7 @@ tem espaçamento de 1em entre cada elemento, margem à direita de 20px e ocupa 2
 
   display: grid;
 
-  gap: 1em;
+  gap: 2.4px;
 
   margin-right: 20px;
   flex: 2;
