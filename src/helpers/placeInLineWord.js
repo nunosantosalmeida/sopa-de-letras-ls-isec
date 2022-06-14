@@ -12,7 +12,7 @@
 
  function placeInLineWord(word2array, lnumb, finalArray, usedWords, positionsOccupied){
    
-    console.log("placeInLineWord");
+    // console.log("placeInLineWord");
 
     /** cantcontinue - variável de controlo para saber se a posição aleatória gerada já está ocupada (ou não) */
     let cantcontinue=false; 

@@ -13,7 +13,7 @@
  function placeInColumnWord(word2array,lnumb,finalArray, usedWords,positionsOccupied){
 
 
-    console.log("placeInColumnWord");
+    // console.log("placeInColumnWord");
     
     /** cantcontinue - variável de controlo para saber se a posição aleatória gerada já está ocupada (ou não) */
     let cantcontinue=false; 

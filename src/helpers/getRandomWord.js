@@ -11,7 +11,7 @@ import checkUsedWord from './checkUsedWord';
  */
  function getRandomWord(lnumb, usedWords){
     
-    console.log("getRandomWord");
+    // console.log("getRandomWord");
 
     let randomword; /**randomWord - Palavra a retornar */
     let passLineCheck=false; /**passLineCHeck - variável de controlo para saber se a palavra cabe numa linha/coluna*/

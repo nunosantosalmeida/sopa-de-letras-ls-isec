@@ -1,5 +1,5 @@
 import {getRandomWord, placeInColumnWord, placeInLineWord} from '../helpers'
-import { ABCD} from '../constants';
+import {ABCD} from '../constants';
 
 /**
  * MakeRandomBoard
@@ -10,7 +10,6 @@ import { ABCD} from '../constants';
  * @param {*} finalArray array final a ser apresentado no tabuleiro
  */
  function fillBoard({boardSize}){
-
     let finalArray=[];  // Array a apresentar no tabuleiro  
     let randomword;  // Palavra aleatória (utilizada para colocar palavras aleatórias no array finalArray) */
     let positionsOccupied = [];  // Array com posições já ocupadas por palavras*/
@@ -18,7 +17,7 @@ import { ABCD} from '../constants';
     let word2array;  // Palavra em forma de array (para colocar nas posições do finalArray)*/
     let inverse;  // Variável de controlo para verificar se palavra será colocada inversamente ou não*/
     
-    console.log("fillBoard");
+    // console.log("fillBoard");
 
     for(let i=0; i<boardSize ; i++){/*i vai de 0 ao número de letras do array final */
         finalArray.push(ABCD[Math.floor(Math.random()*(ABCD.length-1))]);/* e preenche-o com letras aleatórias do abecedário*/

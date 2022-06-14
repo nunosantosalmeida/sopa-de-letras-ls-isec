@@ -14,31 +14,32 @@ import PanelControl from "./components/painel-control/painel-control.component";
 import Footer from "./components/footer/footer.component";
 import GameBoard from "./components/game-board/game-board.component";
 import { React, useEffect, useState } from "react";
-import { TIMEOUTGAME, INITIAL_BOARD_SIDE_SIZE, ABCD} from './constants';
-import { getRandomWord,makeRandomBoard, placeInColumnWord, placeInLineWord, fillBoard} from "./helpers";
+import { TIMEOUTGAME, INITIAL_BOARD_SIDE_SIZE} from "./constants";
+import {fillBoard} from "./helpers";
 
+
+let timerId = undefined;
+let boardSize = INITIAL_BOARD_SIDE_SIZE * INITIAL_BOARD_SIDE_SIZE;
+let boardInfo = fillBoard({boardSize});
+let finalArray = boardInfo[0];
+let usedWords = boardInfo[1];
 
 function App() {
-  let timerId = undefined;
-  let boardSize = INITIAL_BOARD_SIDE_SIZE*INITIAL_BOARD_SIDE_SIZE;
+
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
-  const [letters, setLetters] = useState([]);
+  const [boardSide, setBoardSide] = useState(10);
   const [timer, setTimer] = useState(TIMEOUTGAME);
-
+ 
   // Temporizador
   useEffect(() => {
     if (gameStarted) {
-      
+      let nextTimer;
       timerId = setInterval(() => {
-        let nextTimer;
         setTimer((previousState) => {
           nextTimer = previousState - 1;
           return nextTimer;
         });
-        if (nextTimer === 0) {
-          setGameStarted(false);
-        }
       }, 1000);
     } else if (timer !== TIMEOUTGAME) {
       setTimer(TIMEOUTGAME);
@@ -50,10 +51,11 @@ function App() {
     };
   }, [gameStarted]);
 
+
   // Se o tempo se esgotar, parar o jogo e fazer clearInterval do timerId
   useEffect(() => {
     if (timer <= 0) {
-      console.log("condição timer <= 0")
+      console.log("condição timer <= 0");
       setGameStarted(false);
       clearInterval(timerId);
     }
@@ -78,13 +80,8 @@ function App() {
         break;
     }
 
-    console.log("mudar boardSize para " + boardSize)
-
+    console.log("A mudar boardSize para " + boardSize);
   };
-
-  let boardInfo = fillBoard({boardSize});
-  let finalArray = boardInfo[0],  // Array a apresentar no tabuleiro
-      usedWords  = boardInfo[1];  // Array com palavras já utilizadas no tabuleiro (definidas como strings)*/
 
   const handleGameStart = () => {
     if (gameStarted) {
@@ -92,12 +89,12 @@ function App() {
       setGameStarted(false);
     } else {
       console.log("Inicia Jogo");
-
-      boardInfo = fillBoard(boardSize);
+      
+      boardInfo = fillBoard({boardSize});
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
     
-      setGameStarted(true);  
+      setGameStarted(true);
     }
   };
 
@@ -112,7 +109,7 @@ function App() {
           onLevelChange={handleLevelChange}
           timer={timer}
         />
-        <GameBoard 
+        <GameBoard
           selectedLevel={selectedLevel}
           usedWords={usedWords} // POPULAR ISTO
           letters={finalArray} // POPULAR ISTO

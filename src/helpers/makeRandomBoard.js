@@ -10,7 +10,7 @@ import { ABCD} from '../constants';
  */
  function makeRandomBoard(lnumb,finalArray){
 
-    console.log("A preencher board");
+    // console.log("A preencher board");
 
     for(let i=0; i<lnumb ; i++){/*i vai de 0 ao número de letras do array final */
         finalArray.push(ABCD[Math.floor(Math.random()*(ABCD.length-1))]);/* e preenche-o com letras aleatórias do abecedário*/
