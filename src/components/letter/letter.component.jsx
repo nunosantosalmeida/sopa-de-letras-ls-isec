@@ -15,6 +15,9 @@ import "./letter.css"
  * @returns letra em jsx
  */
 function Letter({item}){
+
+    let key;
+
     return (
     <div className="letter">
         {item}

@@ -1,9 +1,9 @@
 import React from "react";
+import "../../assets/styles/painel-control.css";
 
 function PanelControl(props) {
-  const { gameStarted, handleGameStart, selectedLevel, handleLevelChange, timer } = props;
+  const { gameStarted, onGameStart, selectedLevel, onLevelChange, timer } = props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
-
 
   return (
     <section id="panel-control">
@@ -12,8 +12,8 @@ function PanelControl(props) {
           <select 
             id="btLevel"
             defaultValue="0"
-            onChange={handleLevelChange}
-            disabled={handleGameStart}
+            onChange={onLevelChange}
+            disabled={gameStarted}
           >
             <option value="0">Seleccione...</option>
             <option value="1">Básico (10x10)</option>
@@ -24,8 +24,8 @@ function PanelControl(props) {
         <button
          type="button"
          id="btPlay"
-         disabled={selectedLevel !== "0"}
-         onClick={handleGameStart}
+         disabled={selectedLevel === "0"}
+         onClick={onGameStart}
          className="button play"
         >
           {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
@@ -43,9 +43,7 @@ function PanelControl(props) {
           <dt>Pontuação:</dt>
           <dd id="points">0</dd>
         </dl>
-
       </form>
-
     </section>
   );
 }
