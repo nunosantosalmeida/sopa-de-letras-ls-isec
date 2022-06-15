@@ -15,7 +15,9 @@ import "./letter.css"
  * @param {*} param1 key
  * @returns letra em jsx
  */
-function Letter(props){
+function Letter({item}){
+
+    let key;
     const {/*setletter,*/ lett, index } = props;
 
     let ind=index;

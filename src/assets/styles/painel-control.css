@@ -1,12 +1,12 @@
 #panel-control{
-  margin: 10px 0 25px 0;
-  padding: 10px 10px 10px 10px;
-  background-color: rgb(236, 233, 233);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  width: 865px;
-  min-width: 10px;
-  border-radius: 10px;
-}
+    margin: 10px 0 25px 0;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(236, 233, 233);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    width: 865px;
+    min-width: 10px;
+    border-radius: 10px;
+  }
 .button {
     background-color: #8ed0f7; /* Green */
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -25,16 +25,32 @@
     transition: .2s;
   }
 
-  .play {
+.play {
     /* background-color: white;  */
-    color: rgb(0, 0, 0); 
+    color: rgb(0, 0, 0);
     /* border: 2px solid #4CAF50; */
   }
   
-  .play:hover {
+.play:hover {
     background-color: #4bb2e2f1;
     color: rgb(0, 0, 0);
     transform: scale(1.1); /* Efeito zoom no hover*/
-    
   }
-  
+
+#play:disabled {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: inherit;
+  }
+
+#panel-control .list-item.gameStarted {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+  }
+#panel-control .list-item:not(.gameStarted) {
+    display: none;
+  }
+
