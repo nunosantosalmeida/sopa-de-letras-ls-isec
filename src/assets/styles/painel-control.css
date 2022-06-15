@@ -18,18 +18,19 @@
     border: 2px solid #4CAF50;
   }
   
-  .play:hover {
-    background-color: #4CAF50;
-    color: white;
+  #play:disabled {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: inherit;
   }
   
-  .stop {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #ba0000;
+  #panel-control .list-item.gameStarted {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
   }
-  
-  .stop:hover {
-    background-color: #ba0000;
-    color: white;
+  #panel-control .list-item:not(.gameStarted) {
+    display: none;
   }

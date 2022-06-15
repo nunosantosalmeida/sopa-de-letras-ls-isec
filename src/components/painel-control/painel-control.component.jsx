@@ -1,12 +1,49 @@
 import React from "react";
+import "../../assets/styles/painel-control.css";
 
-function PanelControl() {
+function PanelControl(props) {
+  const { gameStarted, onGameStart, selectedLevel, onLevelChange, timer } = props;
+  const gameStartedClass = gameStarted ? " gameStarted" : "";
+
   return (
     <section id="panel-control">
-      <div class="container-fluid text-center">
-        <button class="button play">Play</button>
-        <button class="button stop">Stop</button>
-      </div>
+      <form className="container-fluid text-center">
+        <fieldset className="form-group">
+          <select 
+            id="btLevel"
+            defaultValue="0"
+            onChange={onLevelChange}
+            disabled={gameStarted}
+          >
+            <option value="0">Seleccione...</option>
+            <option value="1">Básico (10x10)</option>
+            <option value="2">Intermédio (20x20)</option>
+            <option value="3">Avançado (25x25)</option>
+          </select>
+        </fieldset>
+        <button
+         type="button"
+         id="btPlay"
+         disabled={selectedLevel === "0"}
+         onClick={onGameStart}
+         className="button play"
+        >
+          {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
+        </button>
+
+        <dl className={`list-item left${gameStartedClass}`}>
+          <dt>Tempo de Jogo:</dt>
+          <dd id="gameTime">{timer}</dd>
+        </dl>
+        <dl className={`list-item right${gameStartedClass}`}>
+          <dt>Pontuação TOP:</dt>
+          <dd id="pointsTop">0</dd>
+        </dl>
+        <dl className={`list-item left${gameStartedClass}`}>
+          <dt>Pontuação:</dt>
+          <dd id="points">0</dd>
+        </dl>
+      </form>
     </section>
   );
 }
