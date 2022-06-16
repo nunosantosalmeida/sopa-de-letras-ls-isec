@@ -30,7 +30,7 @@ function App() {
   const [selectedLevel, setSelectedLevel] = useState("0");
   const [boardSide, setBoardSide] = useState(10);
   const [timer, setTimer] = useState(TIMEOUTGAME);
- 
+
   // Temporizador
   useEffect(() => {
     if (gameStarted) {
@@ -89,11 +89,11 @@ function App() {
       setGameStarted(false);
     } else {
       console.log("Inicia Jogo");
-      
+
       boardInfo = fillBoard({boardSize});
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
-    
+
       setGameStarted(true);
     }
   };

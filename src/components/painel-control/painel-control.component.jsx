@@ -9,7 +9,7 @@ function PanelControl(props) {
     <section id="panel-control">
       <form className="container-fluid text-center">
         <fieldset className="form-group">
-          <select 
+          <select
             id="btLevel"
             defaultValue="0"
             onChange={onLevelChange}
