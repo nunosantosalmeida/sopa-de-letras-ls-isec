@@ -15,7 +15,7 @@ import "./letter.css"
  * @param {*} param1 key
  * @returns letra em jsx
  */
-function Letter({item}){
+function Letter(props){
 
     let key;
     const {/*setletter,*/ lett, index } = props;
@@ -28,11 +28,11 @@ function Letter({item}){
 
 
     function down(){
-        console.log("A SIRUGAR: KEY: "+ind+" | LETER: "+lett);
+        console.log("A SIRUGAR: KEY: " + ind + " | LETER: " + lett);
     }
 
     function up(){
-        console.log("LARGOU: KEY: "+ind+" | LETER: "+lett);
+        console.log("LARGOU: KEY: " + ind + " | LETER: " + lett);
     }
     return (
     <div className="letter" /*onClick={click}*/ onMouseDown={down} onMouseUp={up} /*onMouseEnter={click}*/>

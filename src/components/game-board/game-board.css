@@ -10,6 +10,17 @@
   width: 90%;
 }
 
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 /*.board - class div que contém as letras e palavras a encontrar. tem altura e largura de 600px, é apresentada em grelha (para as letras) 
 tem espaçamento de 1em entre cada elemento, margem à direita de 20px e ocupa 2 flex (no caso 2/3 do espaço de .table, pois .usedWords ocupa 1 flex)*/
 .board {

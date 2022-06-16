@@ -23,3 +23,7 @@ Representa uma letra num tabuleiro.*/
     color: black;
     transform: scale(1.2);
   }
+
+  .letter:active {
+    background-color:orange;
+  }

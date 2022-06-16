@@ -32,7 +32,7 @@ function GameBoard({usedWords, letters, selectedLevel, lnumb}) {
 
     }*/
     return (
-    <div className="table">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
+    <div className="table noselect">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
         <div
         className="board"
         style={{
@@ -41,13 +41,13 @@ function GameBoard({usedWords, letters, selectedLevel, lnumb}) {
         }/*Div que contém o tabuleiro. O style especifica quantas colunas terá e quantas linhas te´ra (sqrt de num total de letras (9=3linhas*3colunas))*/}
         >
 
-          {finalArray.map((item,index) => (/*Coloca todos as letras do array a apresentar...*/
+          {letters.map((item,index) => (/*Coloca todos as letras do array a apresentar...*/
             <Letter /*setletter={setletter}*/ lett={item} index= {index} />
           ))/*...Em elementos do tipo letra */}
         </div>
         <div className="usedWords" /*onClick={showSelectedWords}*/>{/*Div que contém as palavras usadas no tabuleiro*/}
             Used Words:
-            {usedWords.map((item, index) => "\n"+"["+index+" -"+" "+item+"]")}{" "/*Coloca cada uma no texto a apresentar */}
+            {usedWords.map((item, index) => '\n[' + index + ' -  ' + item + ']')}{' '/*Coloca cada uma no texto a apresentar */}
           
         </div>
       </div>
