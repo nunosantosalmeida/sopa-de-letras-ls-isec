@@ -27,3 +27,7 @@ Representa uma letra num tabuleiro.*/
   .letter:active {
     background-color:orange;
   }
+
+ .found{
+    background-color:green;
+  }

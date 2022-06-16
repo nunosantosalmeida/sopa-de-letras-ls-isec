@@ -9,7 +9,7 @@ import {ABCD} from '../constants';
  * @param {*} lnumb número de letras do array
  * @param {*} finalArray array final a ser apresentado no tabuleiro
  */
- function fillBoard({boardSize}){
+ function fillBoard(boardSize){
     let finalArray=[];  // Array a apresentar no tabuleiro  
     let randomword;  // Palavra aleatória (utilizada para colocar palavras aleatórias no array finalArray) */
     let positionsOccupied = [];  // Array com posições já ocupadas por palavras*/

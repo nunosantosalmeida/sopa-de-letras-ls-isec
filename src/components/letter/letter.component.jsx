@@ -17,8 +17,7 @@ import "./letter.css"
  */
 function Letter(props){
 
-    let key;
-    const {/*setletter,*/ lett, index, selecting, setSelecting, setSelection} = props;
+    const {lett, index, selecting, setSelecting, setSelection, isFound} = props;
 
     let ind=index;
     function click(){
@@ -37,8 +36,12 @@ function Letter(props){
         setSelection([ind, lett]);
         setSelecting(false);
     }
+
+    const found = isFound ? "found" : "";
+
     return (
-    <div className="letter" /*onClick={click}*/ onMouseDown={down} onMouseUp={up} /*onMouseEnter={click}*/>
+        // <div className={`letter ${found}`} id={"letter"+index} onMouseDown={down} onMouseUp={up}></div>
+    <div className={"letter "+found} id={"letter"+index} onMouseDown={down} onMouseUp={up}>
         {lett}
     </div>
     )
