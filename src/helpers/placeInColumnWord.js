@@ -100,7 +100,7 @@
                    j++; /*Avança para a letra seguinte do array da palavra a colocar*/
                     
                 }
-                    usedWords.push(word2array.join(''));/*Coloca a palavra colocada como string no tabuleiro nas palavras usadas*/
+                usedWords.push([word2array.join(''), [randPos, randPos + linha * (word2array.length - 1)]]); /*Coloca a palavra colocada como string no tabuleiro nas palavras usadas*/
              }
             
              }

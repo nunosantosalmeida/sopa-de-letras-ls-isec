@@ -18,7 +18,7 @@ import "./letter.css"
 function Letter(props){
 
     let key;
-    const {/*setletter,*/ lett, index } = props;
+    const {/*setletter,*/ lett, index, selecting, setSelecting, setSelection} = props;
 
     let ind=index;
     function click(){
@@ -26,13 +26,16 @@ function Letter(props){
         //setletter(lett);
     }
 
-
     function down(){
         console.log("A SIRUGAR: KEY: " + ind + " | LETER: " + lett);
+        setSelection([ind, lett]);
+        setSelecting(true);
     }
 
     function up(){
         console.log("LARGOU: KEY: " + ind + " | LETER: " + lett);
+        setSelection([ind, lett]);
+        setSelecting(false);
     }
     return (
     <div className="letter" /*onClick={click}*/ onMouseDown={down} onMouseUp={up} /*onMouseEnter={click}*/>

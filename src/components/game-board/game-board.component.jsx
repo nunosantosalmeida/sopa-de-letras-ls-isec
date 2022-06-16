@@ -14,7 +14,7 @@ import "./game-board.css"
  * @param {*} param0 número de letras do tabuleiro
  * @returns Cria um tabuleiro de letras aleatórias e palavras, apresentando o mesmo em jsx.
  */
-function GameBoard({usedWords, letters, selectedLevel, lnumb}) {
+function GameBoard({usedWords, letters, selectedLevel, lnumb, selecting, setSelecting, setSelection}) {
 
     const gameClass =
     selectedLevel === "0"
@@ -42,7 +42,11 @@ function GameBoard({usedWords, letters, selectedLevel, lnumb}) {
         >
 
           {letters.map((item,index) => (/*Coloca todos as letras do array a apresentar...*/
-            <Letter /*setletter={setletter}*/ lett={item} index= {index} />
+            <Letter /*setletter={setletter}*/ lett={item} index= {index}
+              selecting={selecting}
+              setSelecting={setSelecting}
+              setSelection={setSelection}
+            />
           ))/*...Em elementos do tipo letra */}
         </div>
         <div className="usedWords" /*onClick={showSelectedWords}*/>{/*Div que contém as palavras usadas no tabuleiro*/}

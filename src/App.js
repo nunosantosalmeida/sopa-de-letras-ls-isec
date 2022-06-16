@@ -23,13 +23,38 @@ let boardSize = INITIAL_BOARD_SIDE_SIZE * INITIAL_BOARD_SIDE_SIZE;
 let boardInfo = fillBoard({boardSize});
 let finalArray = boardInfo[0];
 let usedWords = boardInfo[1];
+let startKey = "";
+let endKey = "";
+let lastSelection = [];
 
 function App() {
 
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
   const [boardSide, setBoardSide] = useState(10);
+  const [selecting, setSelecting] = useState(false);  // -> Usado para saber se estamos em seleção ou não
+  const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
   const [timer, setTimer] = useState(TIMEOUTGAME);
+
+
+  // useEffect para lidar com a selection
+  useEffect(() => {
+    if(selecting){
+      startKey = selection[0];
+      lastSelection.pop();
+      lastSelection.pop();
+    }
+    else if(!selecting) {
+      endKey = selection[0];
+      lastSelection.push(startKey);
+      lastSelection.push(endKey);
+      console.log(lastSelection);
+    }
+      
+    
+  }, [selecting]);
+
+
 
   // Temporizador
   useEffect(() => {
@@ -114,6 +139,9 @@ function App() {
           usedWords={usedWords} // POPULAR ISTO
           letters={finalArray} // POPULAR ISTO
           lnumb={boardSize}
+          selecting={selecting}
+          setSelecting={setSelecting}
+          setSelection={setSelection}
         />
       </main>
       <Footer/>
