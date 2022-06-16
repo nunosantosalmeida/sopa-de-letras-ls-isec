@@ -101,7 +101,6 @@ function App() {
   return (
     <div id="container">
       <Header />
-      <main className="main-content">
         <PanelControl
           gameStarted={gameStarted}
           onGameStart={handleGameStart}
@@ -115,7 +114,6 @@ function App() {
           letters={finalArray} // POPULAR ISTO
           lnumb={boardSize}
         />
-      </main>
       <Footer/>
     </div>
   );

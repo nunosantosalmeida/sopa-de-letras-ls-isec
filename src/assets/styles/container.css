@@ -1,13 +1,12 @@
 #container {
-    display: flex;
-    flex-direction: column;
-    margin: 25px 0 15px 0;
-    padding: 20px 25px 15px 25px;
-    background-color: #fff;
-    color: black;
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-    align-items: center;
-    width: 1000px;
-    min-width: 900px;
-    border-radius: 20px;
-  }
+  width: 50vw;
+  margin: 15px 0 15px 0;
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: black;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  align-items: center;
+  border-radius: 20px;
+}

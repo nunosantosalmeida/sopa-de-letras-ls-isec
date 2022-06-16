@@ -1,4 +1,4 @@
-export const TIMEOUTGAME = 60; // seconds
+export const TIMEOUTGAME = 500; // seconds
 export const INITIAL_BOARD_SIDE_SIZE = 10;
 export const LEVEL_SETTINGS = [ ["Fácil", "10", false], ["Médio", "20", false], ["Difícil", "25", true] ];
 export const ABCD = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].sort(() => Math.random() - 0.5);
