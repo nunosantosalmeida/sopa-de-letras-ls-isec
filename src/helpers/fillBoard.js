@@ -9,7 +9,7 @@ import {ABCD} from '../constants';
  * @param {*} lnumb número de letras do array
  * @param {*} finalArray array final a ser apresentado no tabuleiro
  */
- function fillBoard({boardSize}){
+ function fillBoard(boardSize){
     let finalArray=[];  // Array a apresentar no tabuleiro  
     let randomword;  // Palavra aleatória (utilizada para colocar palavras aleatórias no array finalArray) */
     let positionsOccupied = [];  // Array com posições já ocupadas por palavras*/
@@ -35,9 +35,9 @@ import {ABCD} from '../constants';
 
         inverse = Math.floor(Math.random()*99); /*Volta a gerar probabilidade 50/50, deta vez para saber se será colocada em linha, coluna ou diagonal */
         if(inverse<50){/*Caso inverse calhe em <50% */
-            placeInLineWord(word2array,boardSize,finalArray, usedWords,positionsOccupied);/*Coloca em linha*/
+            placeInLineWord(word2array, boardSize, finalArray, usedWords, positionsOccupied);/*Coloca em linha*/
         }else{
-            placeInColumnWord(word2array,boardSize,finalArray, usedWords,positionsOccupied);/*Caso contrário coloca em coluna */
+            placeInColumnWord(word2array, boardSize, finalArray, usedWords, positionsOccupied);/*Caso contrário coloca em coluna */
         }
 
         /*FALTA DESENVOLVER NA DIAGONAL */  

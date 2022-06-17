@@ -10,9 +10,6 @@ import checkUsedWord from './checkUsedWord';
  * @returns palavra aleatória
  */
  function getRandomWord(lnumb, usedWords){
-    
-    // console.log("getRandomWord");
-
     let randomword; /**randomWord - Palavra a retornar */
     let passLineCheck=false; /**passLineCHeck - variável de controlo para saber se a palavra cabe numa linha/coluna*/
 
