@@ -11,25 +11,13 @@
  */
 
  function placeInLineWord(word2array, lnumb, finalArray, usedWords, positionsOccupied){
-   
-    // console.log("placeInLineWord");
-
-    /** cantcontinue - variável de controlo para saber se a posição aleatória gerada já está ocupada (ou não) */
-    let cantcontinue=false; 
-    /**randPos - posição aleatória gerada para colocação da palavra no array final*/
-    let randPos;
-    /**found1 - variável de controlo para saber se a posição gerada aleatoriamente cumpre os requisitos de colocação */ 
-    let found1=false;
-    /**found2 - variável de controlo para saber se a posição gerada aleatoriamente cumpre os requisitos de colocação */ 
-    let found2 = false;
-    /**foundPos - posição encontrada que cumpre o requisito de não estar ocupada por uma palavra e a posição gerada ser o começo de uma linha */
-    let foundPos;
-    /**linha - calcula o número de linhas/colunas (como o tabuleiro é quadrado então se lnumb=25, sabemos que linha será 5 [5 linhas * 5 colunas]) */
-    let linha = Math.sqrt(lnumb);
-     /**attempts - tentativas realizadas de gerar uma posição aleatória. Caso as tentativas sejam maiores que o número de letras no tabuleiro, 
-      * a função retorna vazio, evitando deadlocks.
-      * */
-    let attempts =0;
+    let cantcontinue = false;  /** cantcontinue - variável de controlo para saber se a posição aleatória gerada já está ocupada (ou não) */
+    let randPos;  /**randPos - posição aleatória gerada para colocação da palavra no array final*/
+    let found1 = false;  /**found1 - variável de controlo para saber se a posição gerada aleatoriamente cumpre os requisitos de colocação */ 
+    let found2 = false;  /**found2 - variável de controlo para saber se a posição gerada aleatoriamente cumpre os requisitos de colocação */ 
+    let foundPos;  /**foundPos - posição encontrada que cumpre o requisito de não estar ocupada por uma palavra e a posição gerada ser o começo de uma linha */
+    let linha = Math.sqrt(lnumb);  /**linha - calcula o número de linhas/colunas (como o tabuleiro é quadrado então se lnumb=25, sabemos que linha será 5 [5 linhas * 5 colunas]) */
+    let attempts = 0;  /**attempts - tentativas realizadas de gerar uma posição aleatória. Caso as tentativas sejam maiores que o número de letras no tabuleiro, a função retorna vazio, evitando deadlocks. **/
 
     while(!found1 || !found2){
         attempts=attempts+1; /*realizada mais uma tentativa*/
@@ -49,7 +37,6 @@
                     continue; /*"Salta" do for loop*/
                 }
             }
-            
         }
 
         if(!cantcontinue && Number.isInteger(randPos/linha)){ /*Caso possa continuar e comece no início de uma linha... */
@@ -76,13 +63,10 @@
                      }
                      usedWords.push([word2array.join(''), [randPos,randPos+word2array.length-1, false]]); /*Coloca a palavra colocada como string no tabuleiro nas palavras usadas*/
 
-
                  }
              }
          }
     }
-
-    //console.log(positionsOccupied); //debug
 }
 
 export default placeInLineWord;

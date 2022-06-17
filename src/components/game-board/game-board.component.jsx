@@ -6,6 +6,7 @@
 
 import React from 'react';
 import Letter from '../letter/letter.component'
+import WordFind from '../word-find/word-find.component'
 import "./game-board.css"
 
 /**
@@ -26,29 +27,28 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
       : "avancado";
 
       
-    //console.log(foundLetters)
-
     return (
     <div className="table noselect">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
-        <div
-        className="board"
-        style={{
-            gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",/* */
-            gridTemplateRows: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
-        }/*Div que contém o tabuleiro. O style especifica quantas colunas terá e quantas linhas te´ra (sqrt de num total de letras (9=3linhas*3colunas))*/}
+        <div className="board"
+          style={{
+              gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
+              gridTemplateRows: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
+          }}
         >
-          {letters.map((item, index) => (/*Coloca todos as letras do array a apresentar...*/
-            <Letter /*setletter={setletter}*/ lett={item} index={index} 
-              selecting={selecting}
-              setSelecting={setSelecting}
-              setSelection={setSelection}
-              isFound={foundLetters.includes(index)}
-            />
-          ))/*...Em elementos do tipo letra */}
+          {letters.map((item, index) => 
+            (<Letter /*setletter={setletter}*/ lett={item} index={index} 
+                selecting={selecting}
+                setSelecting={setSelecting}
+                setSelection={setSelection}
+                isFound={foundLetters.includes(index)}
+              />
+            )
+           )
+          }
         </div>
-        <div className="usedWords" /*onClick={showSelectedWords}*/>{/*Div que contém as palavras usadas no tabuleiro*/}
-            Used Words:
-            {usedWords.map((item, index) => '\n[' + index + ' -  ' + item + ']')}{' '/*Coloca cada uma no texto a apresentar */}
+
+        <div className="usedWords" >
+          {usedWords.map((item, index) => (<WordFind item={item}/>))}
         </div>
       </div>
     );

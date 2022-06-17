@@ -37,13 +37,12 @@ function Letter(props){
         setSelecting(false);
     }
 
-    const found = isFound ? "found" : "";
+    const found = isFound ? "found" : "letter";
 
     return (
-        // <div className={`letter ${found}`} id={"letter"+index} onMouseDown={down} onMouseUp={up}></div>
-    <div className={"letter "+found} id={"letter"+index} onMouseDown={down} onMouseUp={up}>
-        {lett}
-    </div>
+        <div className={found} key={index} id={"letter"+index} onMouseDown={down} onMouseUp={up}>
+            {lett}
+        </div>
     )
 }
 
