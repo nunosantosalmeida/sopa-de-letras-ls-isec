@@ -12,10 +12,13 @@ import "./game-board.css"
 /**
  * GameBoard
  *
- * @param {*} param0 número de letras do tabuleiro
+ * @param {*} params ({usedWords, letters, selectedLevel, levelSettings, selecting, setSelecting, setSelection, foundLetters})
+ *  
  * @returns Cria um tabuleiro de letras aleatórias e palavras, apresentando o mesmo em jsx.
  */
+
 function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting, setSelecting, setSelection, foundLetters}) {
+
 
     const gameClass =
     selectedLevel === "0"

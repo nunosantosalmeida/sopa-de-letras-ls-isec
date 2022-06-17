@@ -22,7 +22,7 @@
 }
 
 /*.board - class div que contém as letras e palavras a encontrar. tem altura e largura de 600px, é apresentada em grelha (para as letras) 
-tem espaçamento de 1em entre cada elemento, margem à direita de 20px e ocupa 2 flex (no caso 2/3 do espaço de .table, pois .usedWords ocupa 1 flex)*/
+tem espaçamento de 2.4px entre cada elemento, margem à direita de 20px e ocupa 2 flex (no caso 2/3 do espaço de .table, pois .usedWords ocupa 1 flex)*/
 .board {
   height: 600px;
   width: 600px;

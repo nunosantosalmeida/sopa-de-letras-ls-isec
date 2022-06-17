@@ -6,6 +6,10 @@
 
 import React from "react";
 
+/**
+ * Footer - Contém os autores da aplicação.
+ * @returns 
+ */
 function Footer() {
   return (
     <footer className="container-fluid text-center">

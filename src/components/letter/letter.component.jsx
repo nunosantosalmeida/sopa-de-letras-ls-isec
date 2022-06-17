@@ -39,6 +39,7 @@ function Letter(props){
 
     const found = isFound ? "found" : "letter";
 
+
     return (
         <div className={found} key={index} id={"letter"+index} onMouseDown={down} onMouseUp={up}>
             {lett}

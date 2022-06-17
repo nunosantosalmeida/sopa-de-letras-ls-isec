@@ -1,7 +1,19 @@
 # sopa-de-letras-ls-isec
 Trabalho Linguagens Script ISEC 2021/2022
 
-# Getting Started with Create React App
+Desenvolvido por:
+* Micael Eid
+* Nuno Almeida
+* Renato Craveiro
+
+## Objetivo do projeto
+O objetivo deste projeto é o desenvolvimento de um jogo Sopa de Letras em ReactJs.
+Este projeto foi desenvolvido no âmbito da Unidade Curricular de Linguagens Script (Licenciatura em Engenharia Informática - ISEC - Ano Letivo 2021/2022).
+
+
+# Create React App Documentation
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
