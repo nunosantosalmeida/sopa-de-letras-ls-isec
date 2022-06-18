@@ -10,4 +10,6 @@ export { default as placeWordDiagonal } from "./boardConstruction/placeWordDiago
 
 // SELECÇÂO
 export { default as checkSelection } from "./inputValidation/checkSelection";
-export { default as markLetterFound } from "./inputValidation/markLetterFound";
+export { default as markLetterFound } from "./updaters/markLetterFound";
+export { default as updateScore } from "./updaters/updateScore";
+export { default as updateTopScore } from "./updaters/updateTopScore";

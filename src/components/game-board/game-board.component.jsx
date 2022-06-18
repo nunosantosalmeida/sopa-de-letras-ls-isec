@@ -34,8 +34,8 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
     <div className="table noselect">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
         <div className="board"
           style={{
-              gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
-              gridTemplateRows: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
+              gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
+              gridTemplateRows: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
           }}
         >
           {letters.map((item, index) => 
@@ -51,7 +51,7 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
         </div>
 
         <div className="usedWords" >
-          {usedWords.map((item, index) => (<WordFind item={item}/>))}
+          {usedWords.map((item) => (<WordFind item={item}/>))}
         </div>
       </div>
     );

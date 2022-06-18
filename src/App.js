@@ -14,16 +14,18 @@ import PanelControl from "./components/painel-control/painel-control.component";
 import Footer from "./components/footer/footer.component";
 import GameBoard from "./components/game-board/game-board.component";
 import {React, useEffect, useState} from "react";
-import {TIMEOUTGAME, LEVEL_SETTINGS} from "./constants";
-import {fillBoard, checkSelection, markLetterFound} from "./helpers";
+import {LEVEL_SETTINGS_MAP} from "./constants";
+import {fillBoard, checkSelection, updateScore, updateTopScore} from "./helpers";
 
 let timerId = undefined;
-let levelSettings = LEVEL_SETTINGS[0];
-let boardInfo = fillBoard(levelSettings[2]);
+let levelSettings = LEVEL_SETTINGS_MAP[0];
+let boardInfo = fillBoard(levelSettings["area_board"]);
 let finalArray = boardInfo[0], usedWords = boardInfo[1];
 let startKey = 0, endKey = 0;
 let lastSelection = [];
 let foundLetters = [];
+let pontos = 0;
+let topPontos = 0;
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -32,7 +34,7 @@ function App() {
   const [refresh, setRefresh] = useState(false);
   const [selecting, setSelecting] = useState(false);  // -> Usado para saber se estamos em seleção ou não
   const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
-  const [timer, setTimer] = useState(TIMEOUTGAME);
+  const [timer, setTimer] = useState(levelSettings["tempo_jogo"]);
 
   // Mudança de dificuldade
   const handleLevelChange = (event) => {
@@ -40,14 +42,13 @@ function App() {
     setSelectedLevel(value);
 
     switch (value) {
-      case '1': levelSettings = LEVEL_SETTINGS[1]; break;
-      case '2': levelSettings = LEVEL_SETTINGS[2]; break;
-      case '3': levelSettings = LEVEL_SETTINGS[3]; break;
-      default: levelSettings = LEVEL_SETTINGS[0]; break;;
+      case '1': levelSettings = LEVEL_SETTINGS_MAP[1]; break;
+      case '2': levelSettings = LEVEL_SETTINGS_MAP[2]; break;
+      case '3': levelSettings = LEVEL_SETTINGS_MAP[3]; break;
+      default : levelSettings = LEVEL_SETTINGS_MAP[0]; break;;
     }
-    console.log("A mudar dificuldade para " + LEVEL_SETTINGS[0]);
+    console.log("A mudar dificuldade para " + levelSettings["texto_botao"]);
   };
-
   // Temporizador
   useEffect(() => {
     if (gameStarted) {
@@ -58,8 +59,8 @@ function App() {
           return nextTimer;
         });
       }, 1000);
-    } else if (timer !== TIMEOUTGAME) {
-      setTimer(TIMEOUTGAME);
+    } else if (timer !== levelSettings["tempo_jogo"]) {
+      setTimer(levelSettings["tempo_jogo"]);
     }
     return () => {
       if (timerId) {
@@ -67,12 +68,14 @@ function App() {
       }
     };
   }, [gameStarted]);
-
   // Se o tempo se esgotar, parar o jogo e fazer clearInterval do timerId
   useEffect(() => {
     if (timer <= 0) {
+      console.log("CLEAR INTERVAL");
       setGameStarted(false);
       clearInterval(timerId);
+      if(pontos > topPontos)
+        updateTopScore(pontos);
     }
   }, [timer]);
 
@@ -80,15 +83,19 @@ function App() {
   const handleGameStart = () => {
     if (gameStarted) {
       console.log("Termina Jogo");
+      if(pontos > topPontos)
+        updateTopScore(pontos);
       setGameStarted(false);
     } else {
       console.log("Inicia Jogo");
 
-      boardInfo = fillBoard(levelSettings[2]);
+      pontos = 0;
+      boardInfo = fillBoard(levelSettings["area_board"]);
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
 
       setGameStarted(true);
+      // Reveal board
     }
   };
 
@@ -96,12 +103,10 @@ function App() {
   useEffect(() => {
     if(selecting){
       startKey = selection[0];
-      lastSelection.pop();
-      lastSelection.pop();
-      lastSelection.pop();
-      lastSelection.pop();
     }
     else if(!selecting) {
+      lastSelection.pop();
+      lastSelection.pop();
       endKey = selection[0];
       lastSelection.push(startKey);
       lastSelection.push(endKey);
@@ -109,7 +114,10 @@ function App() {
 
       // verificar se foi selecionada uma palavra do jogo
       if(checkSelection(lastSelection, usedWords)) {
-        console.log("Encontramos uma palavra!");
+        
+        pontos = pontos + levelSettings["pontos_palavra"];
+        updateScore(pontos);
+
         let startKey2D = [startKey%10, Math.floor(startKey/10)];
         let endKey2D = [endKey%10, Math.floor(endKey/10)];
         let direction = [endKey2D[0] - startKey2D[0], endKey2D[1] - startKey2D[1]] // Um bocadinho de calculo vectorial nunca fez mal a ninguém
@@ -117,15 +125,15 @@ function App() {
 
 
         if(direction[0] < 0 && direction[1] < 0)  // DIAGONAL
-          incremento = levelSettings[1] + 1;
+          incremento = levelSettings["tam_board"] + 1;
         if(direction[0] > 0 && direction[1] < 0)  // DIAGONAL
-          incremento = levelSettings[1] - 1;
+          incremento = levelSettings["tam_board"] - 1;
         if(direction[0] < 0 && direction[1] > 0)  // DIAGONAL
-          incremento = levelSettings[1] - 1;
+          incremento = levelSettings["tam_board"] - 1;
         if(direction[0] > 0 && direction[1] > 0)  // DIAGONAL
-          incremento = levelSettings[1] + 1;
+          incremento = levelSettings["tam_board"] + 1;
         if(direction[0] === 0)             // VERTICAL
-          incremento = levelSettings[1];
+          incremento = levelSettings["tam_board"];
         if(direction[1] === 0)             // HORIZONTAL
           incremento = 1;
 
