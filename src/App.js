@@ -23,13 +23,8 @@ let boardInfo = fillBoard(levelSettings[2]);
 let finalArray = boardInfo[0], usedWords = boardInfo[1];
 let startKey = 0, endKey = 0;
 let lastSelection = [];
-let foundLetters = [];  
+let foundLetters = [];
 
-
-/**
- * 
- * @returns 
- */
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
@@ -120,7 +115,7 @@ function App() {
         let direction = [endKey2D[0] - startKey2D[0], endKey2D[1] - startKey2D[1]] // Um bocadinho de calculo vectorial nunca fez mal a ninguém
         let incremento = 0;
 
-        
+
         if(direction[0] < 0 && direction[1] < 0)  // DIAGONAL
           incremento = levelSettings[1] + 1;
         if(direction[0] > 0 && direction[1] < 0)  // DIAGONAL
@@ -138,12 +133,12 @@ function App() {
           foundLetters.push(index);
         }
       }
-    }  
+    }
 
     setRefresh(!refresh);
-    
+
   }, [selecting]);
-  
+
   // Components
   return (
     <div id="container">

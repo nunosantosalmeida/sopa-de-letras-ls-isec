@@ -1,36 +1,45 @@
 #panel-control{
-    margin: 10px 0 25px 0;
-    padding: 10px 10px 10px 10px;
-    background-color: rgb(236, 233, 233);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-    width: 865px;
-    min-width: 10px;
-    border-radius: 10px;
-  }
-.button {
-    background-color: #8ed0f7; /* Green */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: .60rem;
+    width: 80%;
+    /* height: 250px; */
     box-sizing: border-box;
-    padding: 14px 40px;
-    position: relative;
-    right: 9.5cm;
+    padding: 5px 5px 5px 5px; /*top, right, bottom, left*/
+    margin: 0px 0 20px 0;
+    background-color: rgb(236, 233, 233);
+    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+      
+  }
+  
+.button {
+    width: 15%;
+    height: 3.5em; 
+    box-sizing: border-box;
+    padding: 0px 0px 0px 0px; /*top, right, bottom, left*/
+    margin: 0px 0px 2px 0px; 
+    background-color: #8ed0f7;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  
+  
+  
+    float:right;
+    margin-top: -39px;
+    margin-bottom: 2;
+
+ 
+    
+    font-size: 1em;
+    font-weight: 450;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 17px;
-    margin: 4px 2px;
+
     transition-duration: 0.4s;
     cursor: pointer;
     transition: .2s;
   }
 
-.play {
-    /* background-color: white;  */
-    color: rgb(0, 0, 0);
-    /* border: 2px solid #4CAF50; */
-  }
-  
+
 .play:hover {
     background-color: #4bb2e2f1;
     color: rgb(0, 0, 0);
@@ -44,13 +53,72 @@
     cursor: inherit;
   }
 
+#btLevel{
+  width: 25%;
+  height: 3em; 
+  box-sizing: border-box;
+  padding: 0px 3px 0px 3px; /*top, right, bottom, left*/
+  background-color: #8ed0f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  float: left;
+  margin-bottom: -10px;
+  font-weight: 450;
+    
+}
+
 #panel-control .list-item.gameStarted {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2px;
+  width: 30%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: 20px 0px 5px 0px;
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+
+  background-color: #8ed0f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+  
+
+ 
   }
 #panel-control .list-item:not(.gameStarted) {
     display: none;
   }
 
+  /*Config Texto e number do Timer*/
+  #tmpJ{
+    color: black;
+  }
+
+  #gameTime{
+    font-variant-numeric: tabular-nums;
+    font-weight: 450;
+    margin: 0px 0px;
+  }
+
+  /*Config Texto e number do pontuação top*/
+  #pntT{
+    color: black;
+  }
+
+  #pointsTop{
+    font-variant-numeric: tabular-nums;
+    font-weight: 450;
+    margin: 0px 0px;
+  }
+
+  /*Config Texto e number do points*/
+  #pnt{
+    color: black;
+  }
+
+  #points{
+    font-variant-numeric: tabular-nums;
+    font-weight: 450;
+    margin: 0px 0px;
+  }

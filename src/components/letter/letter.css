@@ -3,32 +3,38 @@
  * No âmbitio da Unidade Curricular de Linguagens Script (1º Ano - 2º Semestre)
  * ISEC - Licenciatura em Engenharia Informática - Ano Letivo 2021/2022  
  */
-  
+
 /*.letter - class div que representa uma caixa de fundo cinzento, com texto branco, centrado com uma borda arredondada a 5 px.
 Representa uma letra num tabuleiro.*/
-  .letter{
+.letter {
+  width: 90%;
+
     background-color: rgb(236, 233, 233);
     color: rgb(27, 24, 24);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     border-radius: 5px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-    transition: .2s;
-    font-size: 30px;
-  }
-/*.letter:hover - altera a class .letter quando o rato passa por cima de uma letra para que o fundo passe a verde marinho e a letra a preto*/
-  .letter:hover {
-    background-color:#4bb2e2f1;
+
+  transition: 0.2s;
+  font-size: 1.5em;
+
+}
+
+.letter:hover {
+    background-color: #4bb2e2f1;
     color: black;
     transform: scale(1.2);
-  }
-/*.letter:active - altera a class .letter quando o rato clica numa letra para que o fundo passe a laranja*/
-  .letter:active {
+}
+
+.letter:active {
     background-color:orange;
-  }
-/*.found - class de letter caso esteja numa palavra e esta tenha sido encontrada*/
- .found{
+}
+
+.found{
     background-color:green;
     color: rgb(27, 24, 24);
     display: flex;
@@ -37,4 +43,4 @@ Representa uma letra num tabuleiro.*/
     border-radius: 5px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
     font-size: 30px;
-  }
+}

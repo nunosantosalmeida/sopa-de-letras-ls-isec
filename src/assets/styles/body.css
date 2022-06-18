@@ -1,6 +1,7 @@
-body {
+body{
     background-color: #a1d9fa;
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Comic Sans MS," "Comic Sans", "cursive";
+    font-weight: 450;
     display: flex;
     justify-content: center;
   }
