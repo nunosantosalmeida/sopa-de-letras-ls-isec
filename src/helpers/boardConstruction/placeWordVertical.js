@@ -4,21 +4,21 @@
  * Coloca palavras em verticalmente no tabuleiro
  * 
  */
- function placeWordVertical(chosenWord, boardSize, finalArray, usedWords){
+ function placeWordVertical(chosenWord, levelSettings, finalArray, usedWords){
     let wordToPlace = "";
     let cantcontinue=false;  /** cantcontinue - variável de controlo para saber se a posição aleatória gerada já está ocupada (ou não) */
     let randPos;  /**randPos - posição aleatória gerada para colocação da palavra no array final*/
-    let linha = Math.sqrt(boardSize);  /**linha - calcula o número de linhas/colunas (como o tabuleiro é quadrado então se lnumb=25, sabemos que linha será 5 [5 linhas * 5 colunas]) */
+    let linha = Math.sqrt(levelSettings["area_board"]);  /**linha - calcula o número de linhas/colunas (como o tabuleiro é quadrado então se lnumb=25, sabemos que linha será 5 [5 linhas * 5 colunas]) */
     let attempts =0; /**attempts - tentativas realizadas de gerar uma posição aleatória. Caso as tentativas sejam maiores que o número de letras no tabuleiro, a função retorna vazio, evitando deadlocks.  **/
 
     while(true) {
         attempts++;
-        if(attempts > boardSize * 100){
+        if(attempts > levelSettings["area_board"] * 100){
             return; 
         }
         
         cantcontinue = false;
-        randPos = Math.floor(Math.random() * boardSize);
+        randPos = Math.floor(Math.random() * levelSettings["area_board"]);
         if(Math.floor(Math.random()*100)<50)
             wordToPlace = [...chosenWord].reverse();
         else
@@ -34,7 +34,7 @@
             k++;   
         }       
 
-        if (!cantcontinue && Math.floor(randPos/10) + wordToPlace.length <= linha) {
+        if (!cantcontinue && Math.floor(randPos/levelSettings["tam_board"]) + wordToPlace.length <= linha) {
             let j = 0;
             for (let i = randPos;i < randPos + linha * wordToPlace.length;i = i + linha) {/*i começa na posição encontrada até ao tamanho da palavra*num de linhas (lembrando que estamos a colocar uma palavra numa coluna) */
                 finalArray[i] = wordToPlace[j];  /*coloca a letra atual da palavra a colocar na posição i do array */

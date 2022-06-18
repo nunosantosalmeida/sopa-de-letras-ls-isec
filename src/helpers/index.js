@@ -13,3 +13,5 @@ export { default as checkSelection } from "./inputValidation/checkSelection";
 export { default as markLetterFound } from "./updaters/markLetterFound";
 export { default as updateScore } from "./updaters/updateScore";
 export { default as updateTopScore } from "./updaters/updateTopScore";
+export { default as enableBoard } from "./updaters/enableBoard";
+export { default as disableBoard } from "./updaters/disableBoard";

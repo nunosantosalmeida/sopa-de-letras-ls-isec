@@ -32,7 +32,9 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
       
     return (
     <div className="table noselect">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
-        <div className="board"
+        <div 
+          className="board"
+          id="board"
           style={{
               gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
               gridTemplateRows: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",

@@ -6,6 +6,7 @@
 
 import React from "react";
 import "../../assets/styles/painel-control.css";
+import { LEVEL_SETTINGS_MAP } from "../../constants";
 
 
 /**
@@ -29,10 +30,10 @@ function PanelControl(props) {
             onChange={onLevelChange}
             disabled={gameStarted}
           >
-            <option value="0">Seleccione...</option>
-            <option value="1">Básico (10x10)</option>
-            <option value="2">Intermédio (20x20)</option>
-            <option value="3">Avançado (25x25)</option>
+            <option value="0" disabled>Seleccione...</option>
+            <option value="1">Básico ({LEVEL_SETTINGS_MAP[1]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[1]["tam_board"]})</option>
+            <option value="2">Intermédio ({LEVEL_SETTINGS_MAP[2]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[2]["tam_board"]})</option>
+            <option value="3">Avançado ({LEVEL_SETTINGS_MAP[3]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[3]["tam_board"]})</option>
           </select>
         </fieldset>
         <button
@@ -40,6 +41,7 @@ function PanelControl(props) {
           id="btPlay"
           disabled={selectedLevel === "0"}
           onClick={onGameStart}
+          // onChange={setRefresh(!refresh)}
           className="button play"
         >
           {gameStarted ? "Parar jogo" : "Iniciar Jogo"}

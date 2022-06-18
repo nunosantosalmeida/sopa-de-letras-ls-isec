@@ -21,7 +21,8 @@ function WordFind(props){
 
     return (
         <div className={found}>
-            {item[0] + " - " + item[1]}
+            {/* {item[0] + " - " + item[1]} */}
+            {item[0]}
         </div>
     )
 }
