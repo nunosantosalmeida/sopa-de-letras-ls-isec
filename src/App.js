@@ -31,7 +31,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
   const [boardSide, setBoardSide] = useState(levelSettings["tam_board"]);
-  // const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [selecting, setSelecting] = useState(false);  // -> Usado para saber se estamos em seleção ou não
   const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
   const [timer, setTimer] = useState(levelSettings["tempo_jogo"]);
@@ -88,23 +88,33 @@ function App() {
   const handleGameStart = () => {
     if (gameStarted) {
       console.log("Termina Jogo");
+      
+      let addTime = true;
+      for(let uW = 0; uW < usedWords.length; uW++)
+        if(!usedWords[uW][1][2])
+          addTime = false;
+
+      if(addTime){
+        pontos = pontos + document.getElementById("gameTime").textContent;
+        updateScore(pontos);
+      }
+        
       if(pontos > topPontos)
         updateTopScore(pontos);
 
       disableBoard();
       setGameStarted(false);
-      // setRefresh(!refresh);
+      setRefresh(!refresh);
     } else {
       console.log("Inicia Jogo");
       foundLetters = [];
 
-      enableBoard();
+      
       pontos = 0;
       boardInfo = fillBoard(levelSettings);
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
-
-      
+      enableBoard();
       setGameStarted(true);
       // Reveal board
     }
@@ -155,7 +165,7 @@ function App() {
       }
     }
 
-    // setRefresh(!refresh);
+    setRefresh(!refresh);
 
   }, [selecting]);
 
@@ -168,8 +178,8 @@ function App() {
         onGameStart={handleGameStart}
         selectedLevel={selectedLevel}
         onLevelChange={handleLevelChange}
-        // refresh={refresh}
-        // setRefresh={setRefresh}
+        refresh={refresh}
+        setRefresh={setRefresh}
         timer={timer}
       />
       <GameBoard
