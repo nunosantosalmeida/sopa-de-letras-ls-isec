@@ -21,7 +21,7 @@ let timerId = undefined;
 let levelSettings = LEVEL_SETTINGS[0];
 let boardInfo = fillBoard(levelSettings[2]);
 let finalArray = boardInfo[0], usedWords = boardInfo[1];
-let startKey, endKey;
+let startKey = 0, endKey = 0;
 let lastSelection = [];
 let foundLetters = [];  
 
@@ -115,20 +115,22 @@ function App() {
         let direction = [endKey2D[0] - startKey2D[0], endKey2D[1] - startKey2D[1]] // Um bocadinho de calculo vectorial nunca fez mal a ninguém
         let incremento = 0;
 
-        if(direction[0] === direction[1])  // DIAGONAL
+        
+        if(direction[0] < 0 && direction[1] < 0)  // DIAGONAL
+          incremento = levelSettings[1] + 1;
+        if(direction[0] > 0 && direction[1] < 0)  // DIAGONAL
+          incremento = levelSettings[1] - 1;
+        if(direction[0] < 0 && direction[1] > 0)  // DIAGONAL
+          incremento = levelSettings[1] - 1;
+        if(direction[0] > 0 && direction[1] > 0)  // DIAGONAL
           incremento = levelSettings[1] + 1;
         if(direction[0] === 0)             // VERTICAL
           incremento = levelSettings[1];
         if(direction[1] === 0)             // HORIZONTAL
           incremento = 1;
-        
-        if(startKey === Math.min(...lastSelection)){
-          for(let index = Math.min(...lastSelection); index <= Math.max(lastSelection[1]); index = index + incremento)
-            foundLetters.push(index);
-        }
-        else {
-          for(let index = Math.max(...lastSelection); index >= Math.min(lastSelection[1]); index = index - incremento)
-            foundLetters.push(index);
+
+        for(let index = Math.min(...lastSelection); index <= Math.max(...lastSelection); index = index + incremento){
+          foundLetters.push(index);
         }
       }
     }  
