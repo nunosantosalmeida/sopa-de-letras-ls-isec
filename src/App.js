@@ -15,7 +15,7 @@ import Footer from "./components/footer/footer.component";
 import GameBoard from "./components/game-board/game-board.component";
 import {React, useEffect, useState} from "react";
 import {LEVEL_SETTINGS_MAP} from "./constants";
-import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard} from "./helpers";
+import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard, markWordFound} from "./helpers";
 
 let timerId = undefined;
 let levelSettings = LEVEL_SETTINGS_MAP[0];
@@ -91,7 +91,7 @@ function App() {
       
       let addTime = true;
       for(let uW = 0; uW < usedWords.length; uW++)
-        if(!usedWords[uW][1][2])
+        if(!usedWords[uW][3])
           addTime = false;
 
       if(addTime){
@@ -107,9 +107,7 @@ function App() {
       setRefresh(!refresh);
     } else {
       console.log("Inicia Jogo");
-      foundLetters = [];
-
-      
+      foundLetters = [];      
       pontos = 0;
       boardInfo = fillBoard(levelSettings);
       finalArray = boardInfo[0];
@@ -122,10 +120,14 @@ function App() {
 
   // useEffect para lidar com a selection
   useEffect(() => {
+    let endGame = true;
+
     if(selecting){
       startKey = selection[0];
     }
     else if(!selecting) {
+      console.log("End game inicio do callback: " + endGame)
+      
       lastSelection.pop();
       lastSelection.pop();
       endKey = selection[0];
@@ -135,7 +137,8 @@ function App() {
 
       // verificar se foi selecionada uma palavra do jogo
       if(checkSelection(lastSelection, usedWords)) {
-        
+        markWordFound(lastSelection, usedWords);
+
         pontos = pontos + levelSettings["pontos_palavra"];
         updateScore(pontos);
 
@@ -144,28 +147,32 @@ function App() {
         let direction = [endKey2D[0] - startKey2D[0], endKey2D[1] - startKey2D[1]] // Um bocadinho de calculo vectorial nunca fez mal a ninguém
         let incremento = 0;
 
-
-        if(direction[0] < 0 && direction[1] < 0)  // DIAGONAL
-          incremento = levelSettings["tam_board"] + 1;
-        if(direction[0] > 0 && direction[1] < 0)  // DIAGONAL
-          incremento = levelSettings["tam_board"] - 1;
-        if(direction[0] < 0 && direction[1] > 0)  // DIAGONAL
-          incremento = levelSettings["tam_board"] - 1;
-        if(direction[0] > 0 && direction[1] > 0)  // DIAGONAL
-          incremento = levelSettings["tam_board"] + 1;
-        if(direction[0] === 0)             // VERTICAL
-          incremento = levelSettings["tam_board"];
-        if(direction[1] === 0)             // HORIZONTAL
-          incremento = 1;
-
+        // DIAGONAL
+        if(direction[0] < 0 && direction[1] < 0) {incremento = levelSettings["tam_board"] + 1;}
+        if(direction[0] > 0 && direction[1] < 0) {incremento = levelSettings["tam_board"] - 1;}
+        if(direction[0] < 0 && direction[1] > 0) {incremento = levelSettings["tam_board"] - 1;}
+        if(direction[0] > 0 && direction[1] > 0) {incremento = levelSettings["tam_board"] + 1;}
+        // VERTICAL
+        if(direction[0] === 0) {incremento = levelSettings["tam_board"];}
+        // HORIZONTAL
+        if(direction[1] === 0) {incremento = 1;}
           
         for(let index = Math.min(...lastSelection); index <= Math.max(...lastSelection); index = index + incremento){
           foundLetters.push(index);
         }
+
+        for(let uW = 0; uW < usedWords.length; uW++){
+          if(!usedWords[uW][3]){
+            endGame = false;
+          }
+        }
+
+        if(endGame){
+          setGameStarted(false);
+        }
+        setRefresh(!refresh);
       }
     }
-
-    setRefresh(!refresh);
 
   }, [selecting]);
 
@@ -178,8 +185,6 @@ function App() {
         onGameStart={handleGameStart}
         selectedLevel={selectedLevel}
         onLevelChange={handleLevelChange}
-        refresh={refresh}
-        setRefresh={setRefresh}
         timer={timer}
       />
       <GameBoard

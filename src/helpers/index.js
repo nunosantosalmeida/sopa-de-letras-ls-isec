@@ -10,7 +10,7 @@ export { default as placeWordDiagonal } from "./boardConstruction/placeWordDiago
 
 // SELECÇÂO
 export { default as checkSelection } from "./inputValidation/checkSelection";
-export { default as markLetterFound } from "./updaters/markLetterFound";
+export { default as markWordFound } from "./inputValidation/markWordFound";
 export { default as updateScore } from "./updaters/updateScore";
 export { default as updateTopScore } from "./updaters/updateTopScore";
 export { default as enableBoard } from "./updaters/enableBoard";

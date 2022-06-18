@@ -16,7 +16,7 @@ import { LEVEL_SETTINGS_MAP } from "../../constants";
  * @returns objeto jsx
  */
 function PanelControl(props) {
-  const { gameStarted, onGameStart, selectedLevel, onLevelChange, setRefresh, refresh, timer } =
+  const { gameStarted, onGameStart, selectedLevel, onLevelChange, timer } =
     props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
 
@@ -41,7 +41,6 @@ function PanelControl(props) {
           id="btPlay"
           disabled={selectedLevel === "0"}
           onClick={onGameStart}
-          onChange={setRefresh(!refresh)}
           className="button play"
         >
           {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
