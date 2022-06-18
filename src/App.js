@@ -25,6 +25,11 @@ let startKey = 0, endKey = 0;
 let lastSelection = [];
 let foundLetters = [];  
 
+
+/**
+ * 
+ * @returns 
+ */
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");

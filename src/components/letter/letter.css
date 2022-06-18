@@ -17,17 +17,17 @@ Representa uma letra num tabuleiro.*/
     transition: .2s;
     font-size: 30px;
   }
-
+/*.letter:hover - altera a class .letter quando o rato passa por cima de uma letra para que o fundo passe a verde marinho e a letra a preto*/
   .letter:hover {
     background-color:#4bb2e2f1;
     color: black;
     transform: scale(1.2);
   }
-
+/*.letter:active - altera a class .letter quando o rato clica numa letra para que o fundo passe a laranja*/
   .letter:active {
     background-color:orange;
   }
-
+/*.found - class de letter caso esteja numa palavra e esta tenha sido encontrada*/
  .found{
     background-color:green;
     color: rgb(27, 24, 24);
