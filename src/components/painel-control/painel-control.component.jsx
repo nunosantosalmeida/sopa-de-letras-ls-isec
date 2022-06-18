@@ -1,6 +1,20 @@
+/**
+ * Trabalho Realizado por Micael Eid (2019112744), Nuno Almeida (2019121655) e Renato Craveiro (2018011392)
+ * No âmbitio da Unidade Curricular de Linguagens Script (1º Ano - 2º Semestre)
+ * ISEC - Licenciatura em Engenharia Informática - Ano Letivo 2021/2022  
+ */
+
 import React from "react";
 import "../../assets/styles/painel-control.css";
+import { LEVEL_SETTINGS_MAP } from "../../constants";
 
+
+/**
+ * PanelControl - Componente que contém o botão de início/paragem, contagem de tempo, seleção de nível e pontuação do jogo 
+ * 
+ * @param {*} props (gameStarted, onGameStart, selectedLevel, onLevelChange, timer)
+ * @returns objeto jsx
+ */
 function PanelControl(props) {
   const { gameStarted, onGameStart, selectedLevel, onLevelChange, timer } =
     props;
@@ -16,10 +30,10 @@ function PanelControl(props) {
             onChange={onLevelChange}
             disabled={gameStarted}
           >
-            <option value="0">Seleccione...</option>
-            <option value="1">Básico (10x10)</option>
-            <option value="2">Intermédio (20x20)</option>
-            <option value="3">Avançado (25x25)</option>
+            <option value="0" disabled>Seleccione...</option>
+            <option value="1">Básico ({LEVEL_SETTINGS_MAP[1]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[1]["tam_board"]})</option>
+            <option value="2">Intermédio ({LEVEL_SETTINGS_MAP[2]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[2]["tam_board"]})</option>
+            <option value="3">Avançado ({LEVEL_SETTINGS_MAP[3]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[3]["tam_board"]})</option>
           </select>
         </fieldset>
         <button

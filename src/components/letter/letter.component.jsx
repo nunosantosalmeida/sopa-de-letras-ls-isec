@@ -44,7 +44,7 @@ function Letter(props) {
                 {lett}
             </div>
       </div>
-  );
+  )
 }
 
 export default Letter;

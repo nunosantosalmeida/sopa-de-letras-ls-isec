@@ -12,10 +12,13 @@ import "./game-board.css"
 /**
  * GameBoard
  *
- * @param {*} param0 número de letras do tabuleiro
+ * @param {*} params ({usedWords, letters, selectedLevel, levelSettings, selecting, setSelecting, setSelection, foundLetters})
+ *
  * @returns Cria um tabuleiro de letras aleatórias e palavras, apresentando o mesmo em jsx.
  */
+
 function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting, setSelecting, setSelection, foundLetters}) {
+
 
     const gameClass =
     selectedLevel === "0"
@@ -31,9 +34,10 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
 
     <div id="table">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
         <div className="board noselect"
+          id="board"
           style={{
-              gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
-              gridTemplateRows: "repeat(" + Math.sqrt(levelSettings[2]) + ",1fr)",
+              gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
+              gridTemplateRows: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
           }}
         >
           {letters.map((item, index) => 
@@ -49,7 +53,7 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
         </div>
 
         <div className="usedWords" >
-          {usedWords.map((item, index) => (<WordFind item={item}/>))}
+          {usedWords.map((item) => (<WordFind item={item}/>))}
           <div className='new-wordBox'>
             <button type="buttonWord" id="btNewWord" className="btnNW">Nova Palavra</button>
           </div>
