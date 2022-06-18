@@ -55,3 +55,7 @@ tem espaçamento de 1em entre cada elemento, margem à direita de 20px e ocupa 2
 
   
 }
+
+.foundWord {
+  text-decoration: line-through;
+}
