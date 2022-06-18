@@ -8,7 +8,7 @@ function PanelControl(props) {
 
   return (
     <div id="panel-control">
-      <form className="container-fluid text-center">
+      <div className="container-fluid text-center">
         <fieldset className="form-group">
           <select
             id="btLevel"
@@ -31,20 +31,22 @@ function PanelControl(props) {
         >
           {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
         </button>
-
-          <dl className={`list-item left${gameStartedClass}`}>
+        </div>
+        <div className="container-fluid text-center">
+          <dl className={`timer${gameStartedClass}`}>
             <dt id="tmpJ">Tempo de Jogo:</dt>
             <dd id="gameTime">{timer}</dd>
-          </dl>
-          <dl className={`list-item right${gameStartedClass}`}>
-            <dt id="pntT">Pontuação TOP:</dt>
-            <dd id="pointsTop">0</dd>
-          </dl>
-          <dl className={`list-item left${gameStartedClass}`}>
+            </dl>
+            <dl className={`point${gameStartedClass}`}>
             <dt id="pnt">Pontuação:</dt>
             <dd id="points">0</dd>
-          </dl>
-      </form>
+            </dl>
+            <dl className={`points-top${gameStartedClass}`}>
+            <dt id="pntT">Pontuação TOP:</dt>
+            <dd id="pointsTop">0</dd>
+            </dl>   
+        </div> 
+     
     </div>
   );
 }
