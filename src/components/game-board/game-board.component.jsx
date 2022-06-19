@@ -13,7 +13,7 @@ import "./game-board.css"
  * GameBoard
  *
  * @param {*} params ({usedWords, letters, selectedLevel, levelSettings, selecting, setSelecting, setSelection, foundLetters})
- *  
+ *
  * @returns Cria um tabuleiro de letras aleatórias e palavras, apresentando o mesmo em jsx.
  */
 
@@ -31,9 +31,9 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
 
       
     return (
-    <div className="table noselect">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
-        <div 
-          className="board"
+
+    <div id="table">{/*Div que contém os divs tabuleiro (board) e palavras Usadas (usedWords)*/}
+        <div className="board noselect"
           id="board"
           style={{
               gridTemplateColumns: "repeat(" + Math.sqrt(levelSettings["area_board"]) + ",1fr)",
@@ -54,6 +54,9 @@ function GameBoard({usedWords, letters, selectedLevel, levelSettings, selecting,
 
         <div className="usedWords" >
           {usedWords.map((item) => (<WordFind item={item}/>))}
+          <div className='new-wordBox'>
+            <button type="buttonWord" id="btNewWord" className="btnNW">Nova Palavra</button>
+          </div>
         </div>
       </div>
     );

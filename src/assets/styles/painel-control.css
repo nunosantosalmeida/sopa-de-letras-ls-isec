@@ -1,61 +1,56 @@
-#panel-control{
-    width: 80%;
-    /* height: 250px; */
-    box-sizing: border-box;
-    padding: 5px 5px 5px 5px; /*top, right, bottom, left*/
-    margin: 0px 0 20px 0;
-    background-color: rgb(236, 233, 233);
-    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-      
-  }
-  
+#panel-control {
+  width: 80%;
+  /* height: 250px; */
+  /* box-sizing: border-box; */
+  padding: 5px 5px 5px 5px; /*top, right, bottom, left*/
+  margin: 0px 0 20px 0;
+  background-color: rgb(236, 233, 233);
+  box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
 .button {
-    width: 15%;
-    height: 3.5em; 
-    box-sizing: border-box;
-    padding: 0px 0px 0px 0px; /*top, right, bottom, left*/
-    margin: 0px 0px 2px 0px; 
-    background-color: #8ed0f7;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-  
-  
-  
-    float:right;
-    margin-top: -39px;
-    margin-bottom: 2;
+  width: 15%;
+  height: 3em;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 0px; /*top, right, bottom, left*/
+  margin: 0px 0px 2px 0px;
+  background-color: #8ed0f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 
- 
-    
-    font-size: 1em;
-    font-weight: 450;
-    text-align: center;
-    text-decoration: none;
+  float: right;
+  margin-top: -50px;
+  margin-bottom: 2;
 
-    transition-duration: 0.4s;
-    cursor: pointer;
-    transition: .2s;
-  }
+  font-size: 1em;
+  font-weight: 450;
+  text-align: center;
+  text-decoration: none;
 
+  transition-duration: 0.4s;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
 .play:hover {
-    background-color: #4bb2e2f1;
-    color: rgb(0, 0, 0);
-    transform: scale(1.1); /* Efeito zoom no hover*/
-  }
+  background-color: #4bb2e2f1;
+  color: rgb(0, 0, 0);
+  transform: scale(1.1); /* Efeito zoom no hover*/
+}
 
-#play:disabled {
-    background: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    cursor: inherit;
-  }
+.play:disabled {
+  background: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: inherit;
+  transform: scale(1);
+}
 
-#btLevel{
+#btLevel {
   width: 25%;
-  height: 3em; 
+  height: 3em;
   box-sizing: border-box;
   padding: 0px 3px 0px 3px; /*top, right, bottom, left*/
   background-color: #8ed0f7;
@@ -64,61 +59,117 @@
   border-radius: 10px;
 
   float: left;
-  margin-bottom: -10px;
+  margin-bottom: 2px;
+  margin-top: 6px;
   font-weight: 450;
-    
+
+  transition-duration: 0.4s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-#panel-control .list-item.gameStarted {
-  width: 30%;
+#btLevel:hover {
+  background-color: #4bb2e2f1;
+  color: rgb(0, 0, 0);
+  transform: scale(1.1); /* Efeito zoom no hover*/
+}
+
+#gameinfo{
+  width: 100%;
+  background-color: #8ed0f7;
+}
+
+/*TIMER*/
+
+#panel-control .timer.gameStarted {
+  width: 33%;
   box-sizing: border-box;
   padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
-  margin: 20px 0px 5px 0px;
-  display:flex;
+  margin: 1em 0em 0.5em 1em;
+  display: flex;
   flex-direction: row;
   gap: 5px;
 
-  background-color: #8ed0f7;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  float: left;
+
+  background-color: rgb(236, 233, 233);
   border-radius: 5px;
-  box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.2);
-  
+}
 
- 
-  }
-#panel-control .list-item:not(.gameStarted) {
-    display: none;
-  }
+#panel-control .timer:not(.gameStarted) {
+  width: 33%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: 1em 0em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 
-  /*Config Texto e number do Timer*/
-  #tmpJ{
-    color: black;
-  }
+  float: left;
 
-  #gameTime{
-    font-variant-numeric: tabular-nums;
-    font-weight: 450;
-    margin: 0px 0px;
-  }
+  background-color: rgb(236, 233, 233);
+  border-radius: 5px;
+}
 
-  /*Config Texto e number do pontuação top*/
-  #pntT{
-    color: black;
-  }
+/*Pontuação Top*/
 
-  #pointsTop{
-    font-variant-numeric: tabular-nums;
-    font-weight: 450;
-    margin: 0px 0px;
-  }
+#panel-control .points-top.gameStarted {
+  width: 33%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: -2.5em 0em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 
-  /*Config Texto e number do points*/
-  #pnt{
-    color: black;
-  }
+  float: right;
+  background-color: rgb(236, 233, 233);
+  border-radius: 5px;
+}
 
-  #points{
-    font-variant-numeric: tabular-nums;
-    font-weight: 450;
-    margin: 0px 0px;
-  }
+#panel-control .points-top:not(.gameStarted) {
+  width: 33%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: -2.5em 0em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  float: right;
+
+  background-color: rgb(236, 233, 233);
+  border-radius: 5px;
+}
+
+/*Pontuação*/
+
+#panel-control .point.gameStarted {
+  width: 33%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: 1em 0em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  float: left;
+
+  background-color: rgb(236, 233, 233);
+  border-radius: 5px;
+}
+
+#panel-control .point:not(.gameStarted) {
+  width: 33%;
+  box-sizing: border-box;
+  padding: 0px 1px 1px 5px; /*top, right, bottom, left*/
+  margin: 1em 0em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  float: left;
+
+  background-color: rgb(236, 233, 233);
+  border-radius: 5px;
+};
