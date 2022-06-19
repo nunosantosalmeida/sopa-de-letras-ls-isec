@@ -29,7 +29,7 @@ let lastSelection = [];
 let foundLetters = [];
 let pontos = 0;
 let topPontos = 0;
- 
+
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -195,6 +195,7 @@ function App() {
       }
     };
   }, [gameStarted]);
+  
 
   // Components
   return (

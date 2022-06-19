@@ -19,7 +19,17 @@ function PanelControl(props) {
   const { OnUserAddWord, gameStarted, onGameStart, selectedLevel, onLevelChange, timer } =
     props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
+  let top;
 
+  function localTop (){
+    if(JSON.parse(localStorage.getItem("TOPSCORE"))!=null){
+      top = JSON.parse(localStorage.getItem("TOPSCORE"));
+    }else{
+      top = 0;
+    }
+  }
+
+  localTop();
   return (
     <div id="panel-control">
       <div className="gameButtons">
@@ -66,7 +76,7 @@ function PanelControl(props) {
             </div>
             <div className="points-top">
               <dt id="pntT">Pontuação TOP:</dt>
-              <div id="pointsTop">0</div>
+              <div id="pointsTop">{top}</div>
             </div>   
         </div>
     </div>
