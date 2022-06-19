@@ -10,22 +10,33 @@ import checkUsedWord from './checkUsedWord';
  * @returns palavra aleatória
  */
  function getRandomWord(lnumb, usedWords){
-    
+    //let array = [...WORDS].push(ficheiro)
     let randomWordIndex
     let passLineCheck = false; /**passLineCHeck - variável de controlo para saber se a palavra cabe numa linha/coluna*/
+    
+    
+    let finalWords=[...WORDS];
+    let userWords = JSON.parse(localStorage.getItem("USERWORDS"));
+
+    if(userWords.length!=0)
+        finalWords=finalWords.concat(userWords);
+
+    //console.log(finalWords);    
+
+
 
     while(!passLineCheck) { 
         
-        randomWordIndex = Math.floor(Math.random()*WORDS.length)
+        randomWordIndex = Math.floor(Math.random()*finalWords.length) //randomWordIndex = Math.floor(Math.random()*WORDS.length)
         
-        if(checkUsedWord(WORDS[randomWordIndex], usedWords))
+        if(checkUsedWord(finalWords[randomWordIndex], usedWords)) //if(checkUsedWord(WORDS[randomWordIndex], usedWords))
             continue; 
         
-        if(WORDS[randomWordIndex].length<=Math.sqrt(lnumb))
+        if(finalWords[randomWordIndex].length<=Math.sqrt(lnumb)) //if(WORDS[randomWordIndex].length<=Math.sqrt(lnumb))
             passLineCheck=true; 
     }
 
-    return WORDS[randomWordIndex];
+    return finalWords[randomWordIndex]; //return WORDS[randomWordIndex];
 }
 
 export default getRandomWord;

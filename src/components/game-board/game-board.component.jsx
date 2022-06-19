@@ -18,6 +18,7 @@ import "./game-board.css";
  */
 
 function GameBoard({
+  OnUserAddWord,
   usedWords,
   letters,
   selectedLevel,
@@ -66,8 +67,14 @@ function GameBoard({
             <WordFind item={item} />
           ))}
         </div>
+
         <div className="new-wordBox">
-          <button type="buttonWord" id="btNewWord" className="btnNW">
+          <button
+            type="buttonWord"
+            id="btNewWord"
+            className="btnNW"
+            onClick={OnUserAddWord}
+          >
             Nova Palavra
           </button>
         </div>

@@ -8,6 +8,9 @@ export { default as placeWordVertical } from "./boardConstruction/placeWordVerti
 export { default as placeWordHorizontal } from "./boardConstruction/placeWordHorizontal";
 export { default as placeWordDiagonal } from "./boardConstruction/placeWordDiagonal";
 
+//NOVAS PALAVRAS
+export{ default as addNewWord } from "./boardConstruction/addNewWord";
+
 // SELECÇÂO
 export { default as checkSelection } from "./inputValidation/checkSelection";
 export { default as markWordFound } from "./inputValidation/markWordFound";

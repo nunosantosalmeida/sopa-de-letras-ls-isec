@@ -15,7 +15,9 @@ import Footer from "./components/footer/footer.component";
 import GameBoard from "./components/game-board/game-board.component";
 import {React, useEffect, useState} from "react";
 import {LEVEL_SETTINGS_MAP} from "./constants";
-import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard, enableTable, markWordFound} from "./helpers";
+
+import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard, enableTable, markWordFound, addNewWord} from "./helpers";
+
 
 
 let timerId = undefined;
@@ -37,8 +39,6 @@ function App() {
   const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
   const [timer, setTimer] = useState(levelSettings["tempo_jogo"]);
 
-
-  // Mudança de dificuldade
   const handleLevelChange = (event) => {
     const { value } = event.currentTarget;
     setSelectedLevel(value);
@@ -65,7 +65,13 @@ function App() {
       setGameStarted(false);
     }
   }, [timer]);
-  
+
+
+  const handleAddWord = () =>{
+    addNewWord();
+  }
+
+
   // Gerir inicio e fim de jogo
   const handleGameStart = () => {
     if (gameStarted) {
@@ -74,9 +80,6 @@ function App() {
         topPontos = pontos;
         updateTopScore(topPontos);
       }
-
-        
-
       disableBoard();
       setGameStarted(false);
       setRefresh(!refresh);
@@ -192,11 +195,13 @@ function App() {
       }
     };
   }, [gameStarted]);
+
   // Components
   return (
     <div id="container">
       <Header />
       <PanelControl
+        OnUserAddWord ={handleAddWord}
         gameStarted={gameStarted}
         onGameStart={handleGameStart}
         selectedLevel={selectedLevel}
@@ -204,6 +209,7 @@ function App() {
         timer={timer}
       />
       <GameBoard
+        OnUserAddWord ={handleAddWord}
         selectedLevel={selectedLevel}
         usedWords={usedWords}
         letters={finalArray}

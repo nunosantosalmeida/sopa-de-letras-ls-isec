@@ -16,7 +16,7 @@ import { LEVEL_SETTINGS_MAP } from "../../constants";
  * @returns objeto jsx
  */
 function PanelControl(props) {
-  const { gameStarted, onGameStart, selectedLevel, onLevelChange, timer } =
+  const { OnUserAddWord, gameStarted, onGameStart, selectedLevel, onLevelChange, timer } =
     props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
 
@@ -41,6 +41,7 @@ function PanelControl(props) {
           id="btNewWord2" 
           className="button newWord2"
           disabled={selectedLevel === "1" || selectedLevel === "2" || selectedLevel === "3" }
+          onClick={OnUserAddWord}
           >
             Nova Palavra
           </button>
