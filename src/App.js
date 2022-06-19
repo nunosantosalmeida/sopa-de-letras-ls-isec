@@ -69,8 +69,12 @@ function App() {
   const handleGameStart = () => {
     if (gameStarted) {
 
-      if(pontos > topPontos)
-        updateTopScore(pontos);
+      if(pontos > topPontos) {
+        topPontos = pontos;
+        updateTopScore(topPontos);
+      }
+
+        
 
       disableBoard();
       setGameStarted(false);
@@ -79,6 +83,7 @@ function App() {
       console.log("Inicia Jogo");
       foundLetters = [];      
       pontos = 0;
+      updateScore(pontos)
       boardInfo = fillBoard(levelSettings);
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
@@ -172,8 +177,10 @@ function App() {
         updateScore(pontos);
       }
 
-      if(pontos > topPontos)
-        updateTopScore(pontos);
+      if(pontos > topPontos){
+        topPontos = pontos;
+        updateTopScore(topPontos);
+      }
 
       setTimer(levelSettings["tempo_jogo"]);
     }

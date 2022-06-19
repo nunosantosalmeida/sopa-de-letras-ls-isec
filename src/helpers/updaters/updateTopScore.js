@@ -10,7 +10,7 @@ function updateTopScore(newpoints) {
     // localStorage.setItem("pointsTop", parseInt(newpoints));
 
     var element = document.getElementById("pointsTop");
-    element.textContent = String(element);
+    element.textContent = String(newpoints);
 }
 
 export default updateTopScore;
