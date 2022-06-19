@@ -15,3 +15,4 @@ export { default as updateScore } from "./updaters/updateScore";
 export { default as updateTopScore } from "./updaters/updateTopScore";
 export { default as enableBoard } from "./updaters/enableBoard";
 export { default as disableBoard } from "./updaters/disableBoard";
+export { default as enableTable } from "./updaters/enableTable";

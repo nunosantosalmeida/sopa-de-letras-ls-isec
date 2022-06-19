@@ -40,7 +40,7 @@ function Letter(props) {
 
   return (
       <div className={found} onMouseDown={down} onMouseUp={up}>
-            <div key={index} className="letterInner" id={"letterInner" + index} >
+            <div key={index} className="letterInner" id={"letterInner"} >
                 {lett}
             </div>
       </div>

@@ -22,7 +22,7 @@ function PanelControl(props) {
 
   return (
     <div id="panel-control">
-      <div className="container-fluid text-center">
+      <div className="gameButtons">
         <fieldset className="form-group">
           <select
             id="btLevel"
@@ -36,8 +36,16 @@ function PanelControl(props) {
             <option value="3">Avançado ({LEVEL_SETTINGS_MAP[3]["tam_board"] + "x" + LEVEL_SETTINGS_MAP[3]["tam_board"]})</option>
           </select>
         </fieldset>
+        <button 
+          type="buttonWord2" 
+          id="btNewWord2" 
+          className="button newWord2"
+          disabled={selectedLevel === "1" || selectedLevel === "2" || selectedLevel === "3" }
+          >
+            Nova Palavra
+          </button>
         <button
-          type="button"
+          type="buttonPlay"
           id="btPlay"
           disabled={selectedLevel === "0"}
           onClick={onGameStart}
@@ -59,7 +67,7 @@ function PanelControl(props) {
               <dt id="pntT">Pontuação TOP:</dt>
               <div id="pointsTop">0</div>
             </div>   
-        </div> 
+        </div>
     </div>
   );
 }

@@ -15,7 +15,8 @@ import Footer from "./components/footer/footer.component";
 import GameBoard from "./components/game-board/game-board.component";
 import {React, useEffect, useState} from "react";
 import {LEVEL_SETTINGS_MAP} from "./constants";
-import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard, markWordFound} from "./helpers";
+import {fillBoard, checkSelection, updateScore, updateTopScore, enableBoard, disableBoard, enableTable, markWordFound} from "./helpers";
+
 
 let timerId = undefined;
 let levelSettings = LEVEL_SETTINGS_MAP[0];
@@ -36,18 +37,18 @@ function App() {
   const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
   const [timer, setTimer] = useState(levelSettings["tempo_jogo"]);
 
+
   // Mudança de dificuldade
   const handleLevelChange = (event) => {
     const { value } = event.currentTarget;
     setSelectedLevel(value);
-
+  
     switch (value) {
       case '1': levelSettings = LEVEL_SETTINGS_MAP[1]; break;
       case '2': levelSettings = LEVEL_SETTINGS_MAP[2]; break;
       case '3': levelSettings = LEVEL_SETTINGS_MAP[3]; break;
       default : levelSettings = LEVEL_SETTINGS_MAP[0]; break;
     }
-
     boardInfo = fillBoard(levelSettings);
     finalArray = boardInfo[0];
     usedWords  = boardInfo[1];
@@ -64,11 +65,11 @@ function App() {
       setGameStarted(false);
     }
   }, [timer]);
-
+  
   // Gerir inicio e fim de jogo
   const handleGameStart = () => {
     if (gameStarted) {
-
+      
       if(pontos > topPontos) {
         topPontos = pontos;
         updateTopScore(topPontos);
@@ -87,6 +88,7 @@ function App() {
       boardInfo = fillBoard(levelSettings);
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
+      enableTable();
       enableBoard();
       setTimer(levelSettings["tempo_jogo"]);
       setGameStarted(true);
@@ -190,7 +192,6 @@ function App() {
       }
     };
   }, [gameStarted]);
-
   // Components
   return (
     <div id="container">
