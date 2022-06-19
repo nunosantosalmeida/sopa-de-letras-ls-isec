@@ -9,16 +9,17 @@ import {ABCD} from '../../constants';
     let usedWords= [];  // Array com palavras já utilizadas no tabuleiro (definidas como strings)*/
     let chosenWord;  // Palavra em forma de array (para colocar nas posições do finalArray)*/
     let orientation;  // Variável de controlo para verificar se palavra será colocada inversamente ou não*/
-    
+    let placeholder = "";
+
     // Preenche array com PLACEHOLDERS;
     for(let i = 0; i < levelSettings["area_board"] ; i++){
-        finalArray.push("");
+        finalArray.push(placeholder);
     }
 
-    for(let c = 0; c < (Math.floor((Math.sqrt(levelSettings["area_board"])))/2); c++){ /**coloca numero de linhas/2 de palavras no tabuleiro (para não ser completamente cheio de palavras) */
+    for(let c = 0; c < levelSettings["num_palavras"]; c++) {
 
-    chosenWord = Array.from(getRandomWord(levelSettings["area_board"], usedWords)); // constroi array a partir de palavra random
-       
+        chosenWord = Array.from(getRandomWord(levelSettings["area_board"], usedWords)); // constroi array a partir de palavra random
+        
         // Coloca a palavra no board, numa orientação aleatoria
         orientation = Math.floor(Math.random()*100); 
         if(orientation < 33){
@@ -32,11 +33,11 @@ import {ABCD} from '../../constants';
         }
     }
 
-    // // Preenche array com letra aleatórias;
-    // for(let i = 0; i < levelSettings["area_board"] ; i++){
-    //     if(finalArray[i] === "")    
-    //         finalArray[i] = ABCD[Math.floor(Math.random()*(ABCD.length-1))];
-    // }
+    // Preenche array com letra aleatórias;
+    for(let i = 0; i < levelSettings["area_board"] ; i++){
+        if(finalArray[i] === placeholder)    
+            finalArray[i] = ABCD[Math.floor(Math.random()*(ABCD.length-1))];
+    }
     
     return [finalArray, usedWords]
 }

@@ -6,7 +6,7 @@
 
 function updateScore(newpoints) {
     var element = document.getElementById("points");
-    element.textContent = newpoints;
+    element.textContent = String(newpoints);
 }
 
 export default updateScore;

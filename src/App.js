@@ -26,11 +26,11 @@ let lastSelection = [];
 let foundLetters = [];
 let pontos = 0;
 let topPontos = 0;
+ 
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState("0");
-  const [boardSide, setBoardSide] = useState(levelSettings["tam_board"]);
   const [refresh, setRefresh] = useState(false);
   const [selecting, setSelecting] = useState(false);  // -> Usado para saber se estamos em seleção ou não
   const [selection, setSelection] = useState([]);  // -> Usado para passar a seleção
@@ -51,54 +51,24 @@ function App() {
     boardInfo = fillBoard(levelSettings);
     finalArray = boardInfo[0];
     usedWords  = boardInfo[1];
+    setTimer(levelSettings["tempo_jogo"]);
 
     console.log("A mudar dificuldade para " + levelSettings["texto_botao"]);
   };
-  // Temporizador
-  useEffect(() => {
-    if (gameStarted) {
-      let nextTimer;
-      timerId = setInterval(() => {
-        setTimer((previousState) => {
-          nextTimer = previousState - 1;
-          return nextTimer;
-        });
-      }, 1000);
-    } else if (timer !== levelSettings["tempo_jogo"]) {
-      setTimer(levelSettings["tempo_jogo"]);
-    }
-    return () => {
-      if (timerId) {
-        clearInterval(timerId);
-      }
-    };
-  }, [gameStarted]);
+ 
   // Se o tempo se esgotar, parar o jogo e fazer clearInterval do timerId
   useEffect(() => {
     if (timer <= 0) {
       console.log("CLEAR INTERVAL");
-      setGameStarted(false);
       clearInterval(timerId);
-      if(pontos > topPontos)
-        updateTopScore(pontos);
+      setGameStarted(false);
     }
   }, [timer]);
 
   // Gerir inicio e fim de jogo
   const handleGameStart = () => {
     if (gameStarted) {
-      console.log("Termina Jogo");
-      
-      let addTime = true;
-      for(let uW = 0; uW < usedWords.length; uW++)
-        if(!usedWords[uW][3])
-          addTime = false;
 
-      if(addTime){
-        pontos = pontos + document.getElementById("gameTime").textContent;
-        updateScore(pontos);
-      }
-        
       if(pontos > topPontos)
         updateTopScore(pontos);
 
@@ -113,6 +83,7 @@ function App() {
       finalArray = boardInfo[0];
       usedWords  = boardInfo[1];
       enableBoard();
+      setTimer(levelSettings["tempo_jogo"]);
       setGameStarted(true);
       // Reveal board
     }
@@ -170,11 +141,48 @@ function App() {
         if(endGame){
           setGameStarted(false);
         }
-        setRefresh(!refresh);
+        else{
+          setRefresh(!refresh);
+        }
       }
     }
 
   }, [selecting]);
+
+   // Temporizador
+   useEffect(() => {
+    if (gameStarted) {
+      let nextTimer;
+      timerId = setInterval(() => {
+        setTimer((previousState) => {
+          nextTimer = previousState - 1;
+          return nextTimer;
+        });
+      }, 1000);
+    } else if (timer !== levelSettings["tempo_jogo"]) {
+
+      let addTime = true;
+      for(let uW = 0; uW < usedWords.length; uW++)
+        if(!usedWords[uW][3])
+          addTime = false;
+      
+      if(addTime){
+        console.log(timer);
+        pontos = pontos + parseInt(timer, 10);
+        updateScore(pontos);
+      }
+
+      if(pontos > topPontos)
+        updateTopScore(pontos);
+
+      setTimer(levelSettings["tempo_jogo"]);
+    }
+    return () => {
+      if (timerId) {
+        clearInterval(timerId);
+      }
+    };
+  }, [gameStarted]);
 
   // Components
   return (

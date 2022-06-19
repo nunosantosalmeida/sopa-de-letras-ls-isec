@@ -46,21 +46,20 @@ function PanelControl(props) {
           {gameStarted ? "Parar jogo" : "Iniciar Jogo"}
         </button>
         </div>
-        <div className="container-fluid text-center">
-          <dl className={`timer${gameStartedClass}`}>
-            <dt id="tmpJ">Tempo de Jogo:</dt>
-            <dd id="gameTime">{timer}</dd>
-            </dl>
-            <dl className={`point${gameStartedClass}`}>
-            <dt id="pnt">Pontuação:</dt>
-            <dd id="points">0</dd>
-            </dl>
-            <dl className={`points-top${gameStartedClass}`}>
-            <dt id="pntT">Pontuação TOP:</dt>
-            <dd id="pointsTop">0</dd>
-            </dl>   
+        <div className="gameinfo">
+          <div className="timer">
+              <dt id="tmpJ">Tempo de Jogo:</dt>
+              <div id="gameTime">{timer}</div>
+            </div>
+            <div className="point">
+              <dt id="pnt">Pontuação:</dt>
+              <div id="points">0</div>
+            </div>
+            <div className="points-top">
+              <dt id="pntT">Pontuação TOP:</dt>
+              <div id="pointsTop">0</div>
+            </div>   
         </div> 
-     
     </div>
   );
 }

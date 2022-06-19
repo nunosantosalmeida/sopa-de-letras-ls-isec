@@ -5,8 +5,12 @@
  */
 
 function updateTopScore(newpoints) {
+    // var element = document.getElementById("pointsTop");
+    // element.textContent = parseInt(newpoints);
+    // localStorage.setItem("pointsTop", parseInt(newpoints));
+
     var element = document.getElementById("pointsTop");
-    element.textContent = newpoints;
+    element.textContent = String(element);
 }
 
 export default updateTopScore;

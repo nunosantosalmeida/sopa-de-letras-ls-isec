@@ -13,7 +13,7 @@
 
     while(true) {
         attempts++;
-        if(attempts > levelSettings["area_board"] * 100){
+        if(attempts > levelSettings["area_board"] * 500){
             return; 
         }
         

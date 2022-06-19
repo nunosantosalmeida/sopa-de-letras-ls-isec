@@ -13,14 +13,14 @@
 
     while(true){
         attempts++;
-        if(attempts > levelSettings["area_board"] * 100){
+        if(attempts > levelSettings["area_board"] * 500){
             return; 
         }
         
         cantcontinue=false;
         randPos = Math.floor(Math.random()*levelSettings["area_board"]); /*calcula um num aleatório de 0 ao número de letras no tabuleiro*/
         randPos = Math.floor(Math.random() * levelSettings["area_board"]);
-        if(Math.floor(Math.random()*100)<50)
+        if(Math.floor(Math.random()*100) < 50)
             wordToPlace = [...chosenWord].reverse();
         else
             wordToPlace = [...chosenWord];
