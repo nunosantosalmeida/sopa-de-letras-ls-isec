@@ -18,7 +18,7 @@ import checkUsedWord from './checkUsedWord';
     let finalWords=[...WORDS];
     let userWords = JSON.parse(localStorage.getItem("USERWORDS"));
 
-    if(userWords.length!=0)
+    if(userWords!==null)
         finalWords=finalWords.concat(userWords);
 
     //console.log(finalWords);    
